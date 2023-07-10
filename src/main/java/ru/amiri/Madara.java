@@ -8,6 +8,6 @@ import net.minecraftforge.fml.common.Mod;
 public class Madara {
     public Madara() {
 
-        MinecraftForge.EVENT_BUS.register(this);
+
     }
 }
