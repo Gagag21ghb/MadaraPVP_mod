@@ -1,8 +1,6 @@
 package ru.amiri;
 
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-
 
 @Mod("amiri")
 public class Madara {
