@@ -8,4 +8,12 @@ public class Madara {
 
 
     }
+
+    void test(){
+
+    }
+    void test2(){
+
+    }
+
 }
