@@ -19,6 +19,9 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber()
 public class HealthBarRenderer {
+    static ResourceLocation textureLocation =new ResourceLocation ("your_mod_id", "textures/gui/your_texture.png");
+    static ResourceLocation textureLocationFeed =new ResourceLocation ("your_mod_id", "textures/gui/your_texture.png");
+
     @SubscribeEvent
     public static void onRenderLiving(RenderLivingEvent.Post<?, ?> event) {
         if (!(event.getEntity() instanceof PlayerEntity) || event.isCanceled()) {
@@ -33,19 +36,30 @@ public class HealthBarRenderer {
         int currentFeed = player.getFoodData().getFoodLevel();
 
         matrixStack.pushPose();
-        matrixStack.translate(0,  2.6, 0);
+        matrixStack.translate(0, 2.6, 0);
         matrixStack.mulPose(mc.getEntityRenderDispatcher().cameraOrientation());
         matrixStack.scale(-0.025f, -0.025f, 0.025f);
 
         int feedWidth = fontRenderer.width(String.valueOf(currentFeed));
         int healthWidth = fontRenderer.width(String.valueOf(currentHealth));
-        int totalWidth = feedWidth + healthWidth + 5;
 
+        int totalWidth = feedWidth + healthWidth + 5;
         int startX = -totalWidth / 2;
 
-        fontRenderer.drawShadow(matrixStack, String.valueOf(currentHealth), startX, 0, 0xDC143C);
-        startX += feedWidth + 10;
-        fontRenderer.drawShadow(matrixStack, String.valueOf(currentFeed), startX, 0, 0xE9967A);
+        int textureWidth = 9; // Ширина текстуры
+        int textureHeight = 9; // Высота текстуры
+        int textureX = startX - 2 - textureWidth; // X-координата текстуры здоровья (слева от текста здоровья)
+        int textureXFeed = startX + healthWidth + 27; // X-координата текстуры питания (справа от текста здоровья)
+
+        mc.getTextureManager().bind(textureLocation);
+        AbstractGui.blit(matrixStack, textureX, 0, 0, 0, textureWidth, textureHeight, textureWidth, textureHeight);
+        mc.getTextureManager().bind(textureLocationFeed);
+        AbstractGui.blit(matrixStack, textureXFeed, 0, 0, 0, textureWidth, textureHeight, textureWidth, textureHeight);
+
+        int textX = startX + (totalWidth - (healthWidth + feedWidth)) / 2;
+        fontRenderer.drawShadow(matrixStack, String.valueOf(currentHealth), textX, 0, 0xDC143C);
+        fontRenderer.drawShadow(matrixStack, String.valueOf(currentFeed), textX + healthWidth + 10, 0, 0xE9967A);
+
         matrixStack.popPose();
     }
 }
