@@ -1,26 +1,20 @@
 package ru.amiri.pvp_visual_display;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.overlay.PlayerTabOverlayGui;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Util;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber()
-public class HealthBarRenderer {
-    static ResourceLocation textureLocation =new ResourceLocation ("your_mod_id", "textures/gui/your_texture.png");
-    static ResourceLocation textureLocationFeed =new ResourceLocation ("your_mod_id", "textures/gui/your_texture.png");
+public class HealthAndFeedBarRenderer {
+    static ResourceLocation textureLocation = new ResourceLocation("minecraft", "textures/particle/heart.png");
+    static ResourceLocation textureLocationFeed = new ResourceLocation("minecraft", "textures/item/cooked_beef.png");
 
     @SubscribeEvent
     public static void onRenderLiving(RenderLivingEvent.Post<?, ?> event) {
@@ -46,19 +40,29 @@ public class HealthBarRenderer {
         int totalWidth = feedWidth + healthWidth + 5;
         int startX = -totalWidth / 2;
 
-        int textureWidth = 9; // Ширина текстуры
-        int textureHeight = 9; // Высота текстуры
-        int textureX = startX - 2 - textureWidth; // X-координата текстуры здоровья (слева от текста здоровья)
-        int textureXFeed = startX + healthWidth + 27; // X-координата текстуры питания (справа от текста здоровья)
+        int textureWidth = 11;
+        int textureHeight = 11;
+        int textureX = startX - 3 - textureWidth;
+        int textureXFeed = startX + healthWidth + 3;
+
+        int yPosition = -fontRenderer.lineHeight + 2;
+
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.enableDepthTest();
 
         mc.getTextureManager().bind(textureLocation);
-        AbstractGui.blit(matrixStack, textureX, 0, 0, 0, textureWidth, textureHeight, textureWidth, textureHeight);
+        AbstractGui.blit(matrixStack, textureX, yPosition, 0, 0, textureWidth, textureHeight, textureWidth, textureHeight);
         mc.getTextureManager().bind(textureLocationFeed);
-        AbstractGui.blit(matrixStack, textureXFeed, 0, 0, 0, textureWidth, textureHeight, textureWidth, textureHeight);
+        AbstractGui.blit(matrixStack, textureXFeed, yPosition, 0, 0, textureWidth, textureHeight, textureWidth, textureHeight);
 
-        int textX = startX + (totalWidth - (healthWidth + feedWidth)) / 2;
-        fontRenderer.drawShadow(matrixStack, String.valueOf(currentHealth), textX, 0, 0xDC143C);
-        fontRenderer.drawShadow(matrixStack, String.valueOf(currentFeed), textX + healthWidth + 10, 0, 0xE9967A);
+        RenderSystem.disableDepthTest();
+
+        int textX = startX + (totalWidth - (healthWidth + feedWidth + 6)) / 2;
+        fontRenderer.drawShadow(matrixStack, String.valueOf(currentHealth), textX, yPosition, 0xDC143C);
+        fontRenderer.drawShadow(matrixStack, String.valueOf(currentFeed), textX + healthWidth + 15, yPosition, 0xE9967A);
+
+        RenderSystem.enableDepthTest();
 
         matrixStack.popPose();
     }
