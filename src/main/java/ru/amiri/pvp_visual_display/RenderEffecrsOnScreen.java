@@ -18,7 +18,6 @@ import java.util.Collection;
 
 @Mod.EventBusSubscriber
 public class RenderEffecrsOnScreen {
-    static ResourceLocation texturePo = new ResourceLocation("minecraft", "textures/mob_effect/invisibility.png");
 
     @SubscribeEvent
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Post event) {
@@ -28,23 +27,16 @@ public class RenderEffecrsOnScreen {
         Minecraft mc = Minecraft.getInstance();
         Collection<EffectInstance> effects = mc.player.getActiveEffects();
         FontRenderer fontRenderer = mc.font;
-        MatrixStack matrixStack = event.getMatrixStack();
-        ClientPlayerEntity player = mc.player;
 
-        mc.getTextureManager().bind(texturePo);
-
-        int x = 10; // X-координата для рендеринга эффектов
-        int y = 10; // Y-координата для рендеринга эффектов
+        int x = event.getWindow().getX()/2;// X-координата для рендеринга эффектов
+        int y = event.getWindow().getY()/2; // Y-координата для рендеринга эффектов
         int yOffset = 20; // Отступ между каждым эффектом
 
             for (EffectInstance effectInstance : effects) {
-
                 Effect effect = effectInstance.getEffect();
                 int duration = effectInstance.getDuration();
-                String effectName = effect.getDisplayName().getString();
 
-                AbstractGui.blit(matrixStack, 20, 20, 20, 20, 20, 20, 20, 20);
-                fontRenderer.drawShadow(matrixStack,  getTimeRemaining(duration), x, y, effect.getColor());
+                fontRenderer.drawShadow(event.getMatrixStack(),  getTimeRemaining(duration), x, y, effect.getColor());
 
                 y += yOffset;
             }
