@@ -32,10 +32,15 @@ public class RenderEffecrsOnScreen {
         int y = event.getWindow().getY()/2; // Y-координата для рендеринга эффектов
         int yOffset = 20; // Отступ между каждым эффектом
 
+
             for (EffectInstance effectInstance : effects) {
                 Effect effect = effectInstance.getEffect();
                 int duration = effectInstance.getDuration();
 
+                TextureAtlasSprite sprite = mc.getPaintingTextures().getBackSprite();
+                mc.getTextureManager().bind(sprite.atlas().location());
+
+                AbstractGui.blit(event.getMatrixStack(), x, y, 0, 0, sprite.getWidth(), sprite.getHeight(), sprite.getWidth(), sprite.getHeight());
                 fontRenderer.drawShadow(event.getMatrixStack(),  getTimeRemaining(duration), x, y, effect.getColor());
 
                 y += yOffset;
@@ -48,4 +53,6 @@ public class RenderEffecrsOnScreen {
 
         return String.format("%02d:%02d", minutes, seconds);
     }
+
+
 }
