@@ -44,7 +44,6 @@ public class RenderEffecrsOnScreen {
             int duration = effectInstance.getDuration();
 
             TextureAtlasSprite sprite = spriteUploader.get(effect);
-
             mc.getTextureManager().bind(sprite.atlas().location());
             AbstractGui.blit(event.getMatrixStack(), x, y, 0, 0, sprite.getWidth(), sprite.getHeight(), sprite.getWidth(), sprite.getHeight());
 
