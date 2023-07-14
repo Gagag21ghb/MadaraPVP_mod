@@ -23,17 +23,17 @@ public class RenderArmorAndWeapons {
         int x = 50;
         int y = 50;
 
-        assert playerEntity != null;
-        for (ItemStack stack : playerEntity.inventory.armor) {
-            if (stack.getItem() instanceof ArmorItem || stack.getItem() instanceof ElytraItem) {
+        for (int i = 0; i < playerEntity.inventory.armor.size(); i++) {
+            ItemStack stack = playerEntity.inventory.armor.get(i);
+            if (!stack.isEmpty() && (stack.getItem() instanceof ArmorItem || stack.getItem() instanceof ElytraItem)) {
                 int maxDamage = stack.getMaxDamage();
                 int currentDamage = maxDamage - stack.getDamageValue();
                 int percent = (int) ((float) currentDamage / (float) maxDamage * 100);
                 String strengthAndPercent = currentDamage + " (" + percent + "%)";
 
                 fontRenderer.drawShadow(event.getMatrixStack(), strengthAndPercent, x, y, 0x40cfff);
-                y -= 10;
             }
+            y -= 10;
         }
     }
 }
