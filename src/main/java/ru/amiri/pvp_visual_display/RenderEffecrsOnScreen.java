@@ -22,8 +22,6 @@ import java.util.Collection;
 @Mod.EventBusSubscriber
 public class RenderEffecrsOnScreen {
 
-
-
     @SubscribeEvent
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Post event) {
         if (event.getType() != RenderGameOverlayEvent.ElementType.POTION_ICONS)
@@ -51,13 +49,11 @@ public class RenderEffecrsOnScreen {
             int textWidth = fontRenderer.width(timeRemaining);
             int textX = x + (sprite.getWidth() - textWidth) / 2;
             int textY = y + sprite.getHeight() + 2;
-            fontRenderer.drawShadow(event.getMatrixStack(), timeRemaining, textX, textY, -1);
+            fontRenderer.drawShadow(event.getMatrixStack(), timeRemaining, textX, textY, effect.getColor());
 
             y += yOffset;
         }
     }
-
-
     private static String getTimeRemaining(int duration) {
         int seconds = duration / 20;
         int minutes = seconds / 60;

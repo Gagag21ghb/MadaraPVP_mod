@@ -20,12 +20,9 @@ public class HealthAndFeedBarRenderer {
     @SubscribeEvent
     public static void onRenderLiving(RenderLivingEvent.Post<?, ?> event) {
         Minecraft mc = Minecraft.getInstance();
-        if (!(event.getEntity() instanceof PlayerEntity) || event.isCanceled()) {
-            return;
-        }
-        if (mc.screen instanceof InventoryScreen){
-            return;
-        }
+        if (!(event.getEntity() instanceof PlayerEntity) || event.isCanceled()) return;
+        if (mc.screen instanceof InventoryScreen) return;
+
         PlayerEntity player = (PlayerEntity) event.getEntity();
 
         FontRenderer fontRenderer = mc.font;
