@@ -4,6 +4,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ElytraItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,16 +23,15 @@ public class RenderArmorAndWeapons {
         int x = 50;
         int y = 50;
 
-        for (ItemStack stack : playerEntity.getArmorSlots()) {
-            if (stack.getItem() instanceof ArmorItem) {
-                ArmorItem armorItem = (ArmorItem) stack.getItem();
-
-                int maxDamage = armorItem.getMaxDamage(stack);
+        assert playerEntity != null;
+        for (ItemStack stack : playerEntity.inventory.armor) {
+            if (stack.getItem() instanceof ArmorItem || stack.getItem() instanceof ElytraItem) {
+                int maxDamage = stack.getMaxDamage();
                 int currentDamage = maxDamage - stack.getDamageValue();
                 int percent = (int) ((float) currentDamage / (float) maxDamage * 100);
-                String strengthAndPeocent = currentDamage + " ("+ percent+"%" + ")";
+                String strengthAndPercent = currentDamage + " (" + percent + "%)";
 
-                fontRenderer.drawShadow(event.getMatrixStack(), strengthAndPeocent, x, y, 0x40cfff);
+                fontRenderer.drawShadow(event.getMatrixStack(), strengthAndPercent, x, y, 0x40cfff);
                 y -= 10;
             }
         }
