@@ -23,7 +23,7 @@ import java.util.Collection;
 public class RenderEffecrsOnScreen {
 
 
-    static ResourceLocation textureLocation = new ResourceLocation("minecraft", "textures/mob_effect/invisibility.png");
+
     @SubscribeEvent
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Post event) {
         if (event.getType() != RenderGameOverlayEvent.ElementType.POTION_ICONS)

@@ -10,13 +10,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 
-@Mod.EventBusSubscriber()
+@Mod.EventBusSubscriber
 public class RenderArmorAndWeapons {
     @SubscribeEvent
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Post event) {
-        if (event.getType() != RenderGameOverlayEvent.ElementType.TEXT || event.isCanceled()) {
-            return;
-        }
+
 
         Minecraft mc = Minecraft.getInstance();
         PlayerEntity playerEntity = mc.player;
@@ -34,7 +32,7 @@ public class RenderArmorAndWeapons {
                 String armorName = stack.getDisplayName().getString();
                 String armorText = String.format("%s: %d/%d", armorName, currentDamage, maxDamage);
 
-                fontRenderer.drawShadow(event.getMatrixStack(), armorText, x, y, -1);
+                fontRenderer.drawShadow(event.getMatrixStack(), String.valueOf(maxDamage), 50, 50, -1);
                 y -= 10;
             }
         }

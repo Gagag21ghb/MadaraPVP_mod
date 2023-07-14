@@ -5,6 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -18,11 +19,15 @@ public class HealthAndFeedBarRenderer {
 
     @SubscribeEvent
     public static void onRenderLiving(RenderLivingEvent.Post<?, ?> event) {
+        Minecraft mc = Minecraft.getInstance();
         if (!(event.getEntity() instanceof PlayerEntity) || event.isCanceled()) {
             return;
         }
+        if (mc.screen instanceof InventoryScreen){
+            return;
+        }
         PlayerEntity player = (PlayerEntity) event.getEntity();
-        Minecraft mc = Minecraft.getInstance();
+
         FontRenderer fontRenderer = mc.font;
         MatrixStack matrixStack = event.getMatrixStack();
 
