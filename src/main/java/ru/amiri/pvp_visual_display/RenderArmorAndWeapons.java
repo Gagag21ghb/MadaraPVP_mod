@@ -1,5 +1,6 @@
 package ru.amiri.pvp_visual_display;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,10 +20,9 @@ public class RenderArmorAndWeapons {
         Minecraft mc = Minecraft.getInstance();
         PlayerEntity playerEntity = mc.player;
         FontRenderer fontRenderer = mc.font;
-
         int x = 50;
         int y = 50;
-
+         event.getMatrixStack().pushPose();
         for (int i = 0; i < playerEntity.inventory.armor.size(); i++) {
             ItemStack stack = playerEntity.inventory.armor.get(i);
             if (!stack.isEmpty() && (stack.getItem() instanceof ArmorItem || stack.getItem() instanceof ElytraItem)) {
@@ -35,5 +35,6 @@ public class RenderArmorAndWeapons {
             }
             y -= 10;
         }
+         event.getMatrixStack().popPose();
     }
 }
