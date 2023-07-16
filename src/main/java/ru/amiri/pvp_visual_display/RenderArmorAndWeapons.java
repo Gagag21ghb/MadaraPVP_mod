@@ -32,12 +32,14 @@ public class RenderArmorAndWeapons {
             int barHeight = 3;
 
             int x = (screenWidth - fontRenderer.width("100 (100%)") - textureWidth) + 15;
-            int y = (screenHeight - playerEntity.inventory.armor.size() * (textureHeight + barHeight))- 3;
+            int y = (screenHeight - playerEntity.inventory.armor.size() * (textureHeight + barHeight)) - 3;
 
             event.getMatrixStack().pushPose();
             for (int i = playerEntity.inventory.armor.size() - 1; i >= 0; i--) {
                 ItemStack stack = playerEntity.inventory.armor.get(i);
-                if (!stack.isEmpty() && (stack.getItem() instanceof ArmorItem || stack.getItem() instanceof ElytraItem)) {
+                if (stack.isEmpty()) {
+                    mc.getItemRenderer().renderAndDecorateItem(ItemStack.EMPTY, x - textureWidth, y + barHeight); // Рендер пустого слота
+                } else if (stack.getItem() instanceof ArmorItem || stack.getItem() instanceof ElytraItem) {
                     int maxDamage = stack.getMaxDamage();
                     int currentDamage = maxDamage - stack.getDamageValue();
                     int percent = (int) ((float) currentDamage / (float) maxDamage * 100);
@@ -49,9 +51,9 @@ public class RenderArmorAndWeapons {
                     mc.getItemRenderer().renderGuiItemDecorations(mc.font, stack, x - textureWidth - 1, y + barHeight + 1);
 
                     fontRenderer.drawShadow(event.getMatrixStack(), strengthAndPercent, x, y + barHeight + (float) (textureHeight - fontRenderer.lineHeight) / 2, 0x40cfff);
-
-                    y += textureHeight + barHeight;
                 }
+
+                y += textureHeight + barHeight;
             }
             event.getMatrixStack().popPose();
         }
