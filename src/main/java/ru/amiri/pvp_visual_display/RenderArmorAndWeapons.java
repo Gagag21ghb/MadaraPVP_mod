@@ -31,8 +31,8 @@ public class RenderArmorAndWeapons {
             int textureHeight = 16; // Высота текстуры
             int barHeight = 3; // Высота полоски прочности
 
-            int x = screenWidth - fontRenderer.width("100 (100%)") - textureWidth - 10; // X-координата текста
-            int y = screenHeight - playerEntity.inventory.armor.size() * (textureHeight + barHeight); // Y-координата первого элемента
+            int x = (screenWidth - fontRenderer.width("100 (100%)") - textureWidth) + 15; // X-координата текста
+            int y = (screenHeight - playerEntity.inventory.armor.size() * (textureHeight + barHeight))- 3; // Y-координата первого элемента
 
             event.getMatrixStack().pushPose();
             List<ItemStack> armorStacks = new ArrayList<>();
