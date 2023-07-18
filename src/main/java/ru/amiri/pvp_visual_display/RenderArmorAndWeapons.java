@@ -12,10 +12,6 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 @Mod.EventBusSubscriber
 public class RenderArmorAndWeapons {
     @SubscribeEvent
