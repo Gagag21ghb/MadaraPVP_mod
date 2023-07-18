@@ -7,6 +7,7 @@ import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,6 +23,9 @@ public class HealthAndFeedBarRenderer {
         Minecraft mc = Minecraft.getInstance();
         if (!(event.getEntity() instanceof PlayerEntity) || event.isCanceled()) return;
         if (mc.screen instanceof InventoryScreen) return;
+        assert mc.player != null;
+        if(mc.player.hasEffect(Effects.INVISIBILITY)) return;
+
 
         PlayerEntity player = (PlayerEntity) event.getEntity();
 
