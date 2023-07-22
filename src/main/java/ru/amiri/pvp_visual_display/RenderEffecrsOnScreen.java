@@ -18,8 +18,9 @@ import java.util.Collection;
 
 @Mod.EventBusSubscriber
 public class RenderEffecrsOnScreen {
-    private static final int FLASH_TICKS = 10; // Количество кадров для одного полного мигания
-    private static final int FLASH_DURATION = 5 * 20; // Длительность мигания в тиках (5 секунд)
+    private static final int FLASH_TICKS = 10;
+    private static final int FLASH_DURATION = 10 * 20;
+    private static int tickCounter = 0;
 
     @SubscribeEvent
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Pre event) {
@@ -36,16 +37,18 @@ public class RenderEffecrsOnScreen {
             int y = 100;
             int yOffset = 30;
 
+            tickCounter++;
+
             for (EffectInstance effectInstance : effects) {
                 Effect effect = effectInstance.getEffect();
                 int duration = effectInstance.getDuration();
-
+                boolean flashing = isFlashing(duration);
                 PotionSpriteUploader potionspriteuploader = mc.getMobEffectTextures();
                 TextureAtlasSprite sprite = potionspriteuploader.get(effect);
                 mc.getTextureManager().bind(sprite.atlas().location());
 
-                if (isFlashing(duration)) {
-                    float alpha = getAlphaValue(duration);
+                if (flashing) {
+                    float alpha = getAlphaValue();
                     RenderSystem.color4f(1.0F, 1.0F, 1.0F, alpha);
                     AbstractGui.blit(event.getMatrixStack(), x, y, 0, 18, 18, sprite);
                     RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -58,7 +61,6 @@ public class RenderEffecrsOnScreen {
                 int textX = x + (sprite.getWidth() - textWidth) / 2;
                 int textY = y + sprite.getHeight() + 2;
                 fontRenderer.drawShadow(event.getMatrixStack(), timeRemaining, textX, textY, effect.getColor());
-
                 x += yOffset;
             }
         }
@@ -68,10 +70,8 @@ public class RenderEffecrsOnScreen {
         return duration <= FLASH_DURATION;
     }
 
-    private static float getAlphaValue(int duration) {
-        float fadeProgress = (float) (FLASH_DURATION - duration) / (float) FLASH_DURATION;
-        // Используем функцию интерполяции для сглаживания анимации (ease-out функция)
-        return 1.0F - (fadeProgress * fadeProgress);
+    private static float getAlphaValue() {
+        return (tickCounter / FLASH_TICKS) % 2 == 0 ? 1.0F : 0.0F;
     }
 
     private static String getTimeRemaining(int duration) {
