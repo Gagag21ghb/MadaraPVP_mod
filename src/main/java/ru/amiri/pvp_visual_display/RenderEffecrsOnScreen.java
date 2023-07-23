@@ -10,9 +10,11 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import ru.amiri.Madara;
 
 import java.util.Collection;
 
@@ -24,17 +26,16 @@ public class RenderEffecrsOnScreen {
 
     @SubscribeEvent
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Pre event) {
-        if (event.getType() == RenderGameOverlayEvent.ElementType.POTION_ICONS) {
-            event.setCanceled(true);
-        }
+        if (event.getType() == RenderGameOverlayEvent.ElementType.POTION_ICONS) event.setCanceled(true);
+
         if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR) {
             Minecraft mc = Minecraft.getInstance();
             assert mc.player != null;
             Collection<EffectInstance> effects = mc.player.getActiveEffects();
             FontRenderer fontRenderer = mc.font;
 
-            int x = 100;
-            int y = 100;
+            int x = 10;
+            int y = 10;
             int yOffset = 30;
 
             tickCounter++;
@@ -44,6 +45,7 @@ public class RenderEffecrsOnScreen {
                 int duration = effectInstance.getDuration();
                 boolean flashing = isFlashing(duration);
                 PotionSpriteUploader potionspriteuploader = mc.getMobEffectTextures();
+
                 TextureAtlasSprite sprite = potionspriteuploader.get(effect);
                 mc.getTextureManager().bind(sprite.atlas().location());
 
