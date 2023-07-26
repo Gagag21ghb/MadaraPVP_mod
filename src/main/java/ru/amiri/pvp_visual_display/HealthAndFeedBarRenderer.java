@@ -24,7 +24,7 @@ public class HealthAndFeedBarRenderer {
         if (!(event.getEntity() instanceof PlayerEntity) || event.isCanceled()) return;
         if (mc.screen instanceof InventoryScreen) return;
         assert mc.player != null;
-        if(mc.player.hasEffect(Effects.INVISIBILITY)) return;
+        if(event.getEntity().hasEffect(Effects.INVISIBILITY)) return;
 
 
         PlayerEntity player = (PlayerEntity) event.getEntity();

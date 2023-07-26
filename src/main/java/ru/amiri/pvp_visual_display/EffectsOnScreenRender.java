@@ -4,22 +4,18 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.IngameGui;
 import net.minecraft.client.renderer.texture.PotionSpriteUploader;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import ru.amiri.Madara;
 
 import java.util.Collection;
 
 @Mod.EventBusSubscriber
-public class RenderEffecrsOnScreen {
+public class EffectsOnScreenRender {
     private static final int FLASH_TICKS = 10;
     private static final int FLASH_DURATION = 10 * 20;
     private static int tickCounter = 0;
