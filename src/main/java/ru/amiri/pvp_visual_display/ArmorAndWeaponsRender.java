@@ -33,7 +33,7 @@ public class ArmorAndWeaponsRender {
             for (int i = playerEntity.inventory.armor.size() - 1; i >= 0; i--) {
                 ItemStack stack = playerEntity.inventory.armor.get(i);
                 if (stack.isEmpty()) {
-                    mc.getItemRenderer().renderAndDecorateItem(ItemStack.EMPTY, x - textureWidth, y + barHeight); // Рендер пустого слота
+                    mc.getItemRenderer().renderAndDecorateItem(ItemStack.EMPTY, x - textureWidth, y + barHeight);
                 } else if (stack.getItem() instanceof ArmorItem || stack.getItem() instanceof ElytraItem) {
                     int maxDamage = stack.getMaxDamage();
                     int currentDamage = maxDamage - stack.getDamageValue();

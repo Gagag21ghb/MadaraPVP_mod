@@ -39,14 +39,14 @@ public class EffectsOnScreenRender {
             for (EffectInstance effectInstance : effects) {
                 Effect effect = effectInstance.getEffect();
                 int duration = effectInstance.getDuration();
-                boolean flashing = isFlashing(duration);
+                boolean flashing = duration <= FLASH_DURATION;
                 PotionSpriteUploader potionspriteuploader = mc.getMobEffectTextures();
 
                 TextureAtlasSprite sprite = potionspriteuploader.get(effect);
                 mc.getTextureManager().bind(sprite.atlas().location());
 
                 if (flashing) {
-                    float alpha = getAlphaValue();
+                    float alpha = (tickCounter / FLASH_TICKS) % 2 == 0 ? 1.0F : 0.0F;
                     RenderSystem.color4f(1.0F, 1.0F, 1.0F, alpha);
                     AbstractGui.blit(event.getMatrixStack(), x, y, 0, 18, 18, sprite);
                     RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -63,15 +63,6 @@ public class EffectsOnScreenRender {
             }
         }
     }
-
-    private static boolean isFlashing(int duration) {
-        return duration <= FLASH_DURATION;
-    }
-
-    private static float getAlphaValue() {
-        return (tickCounter / FLASH_TICKS) % 2 == 0 ? 1.0F : 0.0F;
-    }
-
     private static String getTimeRemaining(int duration) {
         int seconds = duration / 20;
         int minutes = seconds / 60;
