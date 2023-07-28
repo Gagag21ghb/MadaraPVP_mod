@@ -45,10 +45,9 @@ public class HealthAndFeedBarRenderer {
 
         int totalWidth = feedWidth + healthWidth + 5;
         int startX = -totalWidth / 2;
+        int texture = 11;
 
-        int textureWidth = 11;
-        int textureHeight = 11;
-        int textureX = startX - 3 - textureWidth;
+        int textureX = startX - 3 - texture;
         int textureXFeed = startX + healthWidth + 3;
         int textX = startX + (totalWidth - (healthWidth + feedWidth + 6)) / 2;
         int yPosition = -fontRenderer.lineHeight + 2;
@@ -58,9 +57,9 @@ public class HealthAndFeedBarRenderer {
         RenderSystem.enableDepthTest();
 
         mc.getTextureManager().bind(textureLocation);
-        AbstractGui.blit(matrixStack, textureX, yPosition, 0, 0, textureWidth, textureHeight, textureWidth, textureHeight);
+        AbstractGui.blit(matrixStack, textureX, yPosition, 0, 0, texture, texture, texture, texture);
         mc.getTextureManager().bind(textureLocationFeed);
-        AbstractGui.blit(matrixStack, textureXFeed, yPosition, 0, 0, textureWidth, textureHeight, textureWidth, textureHeight);
+        AbstractGui.blit(matrixStack, textureXFeed, yPosition, 0, 0, texture, texture, texture, texture);
 
         fontRenderer.drawShadow(matrixStack, String.valueOf(currentHealth), textX, yPosition, 0xDC143C);
         fontRenderer.drawShadow(matrixStack, String.valueOf(currentFeed), textX + healthWidth + 15, yPosition, 0xcd853f);
