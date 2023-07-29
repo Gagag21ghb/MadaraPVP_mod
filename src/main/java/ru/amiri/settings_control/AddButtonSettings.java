@@ -11,7 +11,7 @@ import org.lwjgl.glfw.GLFW;
 public class AddButtonSettings {
     private static final String CATEGORY = "Madara";
     public static final KeyBinding
-            MY_KEY_FIRST = new KeyBinding("key.open.screen", GLFW.GLFW_KEY_T, CATEGORY);
+            MY_KEY_FIRST = new KeyBinding("key.open.screen", GLFW.GLFW_KEY_G, CATEGORY);
 
     public static void register() {
         setRegister(MY_KEY_FIRST);
