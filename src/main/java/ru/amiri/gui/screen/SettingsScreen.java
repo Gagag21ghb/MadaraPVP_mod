@@ -8,6 +8,8 @@ import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.event.ClickEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,7 +19,7 @@ import ru.amiri.Madara;
 @Mod.EventBusSubscriber
 public class SettingsScreen extends Screen {
     private static final ResourceLocation LOLOLOSHKA = new ResourceLocation(Madara.MOD_ID, "textures/gui/lololoshka.jpg");
-
+    private static final ITextComponent clickableText = new StringTextComponent("test").withStyle();
 
     protected SettingsScreen(ITextComponent p_i51108_1_) {
           super(p_i51108_1_);
@@ -36,6 +38,22 @@ public class SettingsScreen extends Screen {
         blit(matrixStack, x, y, 0, 0, 200, 160);
 
         super.render(matrixStack, mouseX, mouseY, partialTicks);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+
+        int buttonWidth = 100;
+        int buttonHeight = 20;
+        int x = (this.width - buttonWidth) / 2;
+        int y = this.height / 2 + 40;
+
+        Button myButton = new Button(x, y, buttonWidth, buttonHeight, clickableText, button -> {
+
+        });
+
+        this.addButton(myButton);
     }
 
     @SubscribeEvent
