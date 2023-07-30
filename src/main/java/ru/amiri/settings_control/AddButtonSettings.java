@@ -20,5 +20,15 @@ public class AddButtonSettings {
     public static void setRegister(FMLClientSetupEvent event) {
         ClientRegistry.registerKeyBinding(MY_KEY_FIRST);
     }
+    @Mod.EventBusSubscriber
+    public class AddingFunctionality {
+        @SubscribeEvent
+        public  void onKeyInput(InputEvent.KeyInputEvent event) {
+            if (MY_KEY_FIRST.isDown()) {
+                Minecraft.getInstance().setScreen(new SettingsScreen(new StringTextComponent("Text")));
+            }
+        }
+    }
+
 
 }
