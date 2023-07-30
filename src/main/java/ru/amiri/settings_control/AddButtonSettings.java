@@ -16,20 +16,9 @@ import ru.amiri.gui.screen.SettingsScreen;
 public class AddButtonSettings {
     private static final String CATEGORY = "Madara";
     public static final KeyBinding MY_KEY_FIRST = new KeyBinding("key.open.screen", GLFW.GLFW_KEY_G, CATEGORY);
-    public static SettingsScreen screen;
     @SubscribeEvent
     public static void setRegister(FMLClientSetupEvent event) {
         ClientRegistry.registerKeyBinding(MY_KEY_FIRST);
     }
-    @SubscribeEvent
-    public static void onKeyInput(InputEvent.KeyInputEvent event) {
-        if (MY_KEY_FIRST.isDown()) {
-            if (screen == null) {
-                screen = new SettingsScreen(new StringTextComponent("text"));
-                Minecraft.getInstance().setScreen(screen);
-            }
-        } else {
-            screen = null;
-        }
-    }
+
 }
