@@ -13,7 +13,7 @@ import ru.amiri.Madara;
 import ru.amiri.gui.screen.SettingsScreen;
 
 @Mod.EventBusSubscriber(modid = Madara.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class AddButtonSettings {
+public class AddSettings {
     private static final String CATEGORY = "Madara";
     public static final KeyBinding MY_KEY_FIRST = new KeyBinding("key.open.screen", GLFW.GLFW_KEY_G, CATEGORY);
 

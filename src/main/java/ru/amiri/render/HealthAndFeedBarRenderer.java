@@ -5,7 +5,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
