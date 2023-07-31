@@ -1,4 +1,4 @@
-package ru.amiri.pvp_visual_display;
+package ru.amiri.render;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

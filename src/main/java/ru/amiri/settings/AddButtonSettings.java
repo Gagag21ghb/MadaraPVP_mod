@@ -1,4 +1,4 @@
-package ru.amiri.settings_control;
+package ru.amiri.settings;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -16,19 +16,20 @@ import ru.amiri.gui.screen.SettingsScreen;
 public class AddButtonSettings {
     private static final String CATEGORY = "Madara";
     public static final KeyBinding MY_KEY_FIRST = new KeyBinding("key.open.screen", GLFW.GLFW_KEY_G, CATEGORY);
+
     @SubscribeEvent
     public static void setRegister(FMLClientSetupEvent event) {
         ClientRegistry.registerKeyBinding(MY_KEY_FIRST);
     }
-    @Mod.EventBusSubscriber
-    public class AddingFunctionality {
+
+    @Mod.EventBusSubscriber(modid = Madara.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class AddingFunctionality {
         @SubscribeEvent
-        public  void onKeyInput(InputEvent.KeyInputEvent event) {
+        public static void onKeyInput(InputEvent.KeyInputEvent event) {
             if (MY_KEY_FIRST.isDown()) {
                 Minecraft.getInstance().setScreen(new SettingsScreen(new StringTextComponent("Text")));
             }
         }
     }
-
 
 }

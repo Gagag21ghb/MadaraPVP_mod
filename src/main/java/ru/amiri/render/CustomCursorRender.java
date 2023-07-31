@@ -1,4 +1,4 @@
-package ru.amiri.addition_in_mod;
+package ru.amiri.render;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;

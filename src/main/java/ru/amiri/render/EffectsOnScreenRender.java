@@ -1,4 +1,4 @@
-package ru.amiri.pvp_visual_display;
+package ru.amiri.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
