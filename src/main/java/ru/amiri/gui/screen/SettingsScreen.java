@@ -8,7 +8,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.fml.common.Mod;
+import org.lwjgl.glfw.GLFW;
 import ru.amiri.Madara;
+import ru.amiri.settings.AddButtonSettings;
+
+import static ru.amiri.settings.AddButtonSettings.MY_KEY_FIRST;
 
 @Mod.EventBusSubscriber
 public class SettingsScreen extends Screen {
@@ -21,6 +25,15 @@ public class SettingsScreen extends Screen {
     @Override
     public boolean isPauseScreen() {
         return false;
+    }
+
+    @Override
+    public boolean keyPressed(int p_231046_1_, int p_231046_2_, int p_231046_3_) {
+        if (MY_KEY_FIRST.isDown()) {
+            Minecraft.getInstance().setScreen(null);
+            return true;
+        }
+        return super.keyPressed(p_231046_1_, p_231046_2_, p_231046_3_);
     }
 
     @Override
