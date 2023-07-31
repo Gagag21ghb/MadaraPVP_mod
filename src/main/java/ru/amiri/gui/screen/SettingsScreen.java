@@ -29,7 +29,7 @@ public class SettingsScreen extends Screen {
 
     @Override
     public boolean keyPressed(int p_231046_1_, int p_231046_2_, int p_231046_3_) {
-        if (MY_KEY_FIRST.isDown()) {
+        if (p_231046_1_ == MY_KEY_FIRST.getKey().getValue()) {
             Minecraft.getInstance().setScreen(null);
             return true;
         }

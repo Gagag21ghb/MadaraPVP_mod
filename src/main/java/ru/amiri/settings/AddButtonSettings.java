@@ -12,8 +12,6 @@ import org.lwjgl.glfw.GLFW;
 import ru.amiri.Madara;
 import ru.amiri.gui.screen.SettingsScreen;
 
-import java.time.chrono.MinguoEra;
-
 @Mod.EventBusSubscriber(modid = Madara.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AddButtonSettings {
     private static final String CATEGORY = "Madara";
