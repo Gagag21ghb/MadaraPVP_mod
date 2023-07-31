@@ -7,10 +7,7 @@ import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.lwjgl.glfw.GLFW;
 import ru.amiri.Madara;
 
 @Mod.EventBusSubscriber
@@ -20,14 +17,18 @@ public class SettingsScreen extends Screen {
 
     public SettingsScreen(ITextComponent p_i51108_1_) {
           super(p_i51108_1_);
+    }
+    @Override
+    public boolean isPauseScreen() {
+        return false;
+    }
 
-        }
     @Override
     public void render(MatrixStack matrixStack,  int mouseX, int mouseY, float partialTicks) {
         super.renderBackground(matrixStack);
 
         int textureWidth = 200;
-        int textureHeight = 160;
+        int textureHeight = 180;
         int x = (this.width - textureWidth) / 2;
         int y = (this.height - textureHeight) / 2;
 
@@ -53,7 +54,7 @@ public class SettingsScreen extends Screen {
         this.addButton(myButton);
     }
 
-    class ButtonCustom extends Button{
+    static class ButtonCustom extends Button{
 
         public ButtonCustom(int p_i232255_1_, int p_i232255_2_, int p_i232255_3_, int p_i232255_4_, ITextComponent p_i232255_5_, IPressable p_i232255_6_) {
             super(p_i232255_1_, p_i232255_2_, p_i232255_3_, p_i232255_4_, p_i232255_5_, p_i232255_6_);

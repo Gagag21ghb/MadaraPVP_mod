@@ -22,7 +22,7 @@ public class HealthAndFeedBarRenderer {
     public static void onRenderLiving(RenderLivingEvent.Post<?, ?> event) {
         Minecraft mc = Minecraft.getInstance();
         if (!(event.getEntity() instanceof PlayerEntity) || event.isCanceled()) return;
-        if (mc.screen instanceof InventoryScreen) return;
+        if (mc.screen != null) return;
         assert mc.player != null;
         if(event.getEntity().hasEffect(Effects.INVISIBILITY)) return;
 
