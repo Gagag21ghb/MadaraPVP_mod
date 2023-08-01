@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.lwjgl.glfw.GLFW;
 import ru.amiri.Madara;
-import ru.amiri.gui.screen.SettingsScreen;
+import ru.amiri.gui.screen.MainSettingsScreen;
 
 @Mod.EventBusSubscriber(modid = Madara.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AddSettings {
@@ -28,7 +28,7 @@ public class AddSettings {
         public static void onKeyInput(InputEvent.KeyInputEvent event) {
             if (MY_KEY_FIRST.isDown()) {
                 if (Minecraft.getInstance().screen == null){
-                    Minecraft.getInstance().setScreen(new SettingsScreen(new StringTextComponent("Text")));
+                    Minecraft.getInstance().setScreen(new MainSettingsScreen(new StringTextComponent("Text")));
                 }
             }
         }

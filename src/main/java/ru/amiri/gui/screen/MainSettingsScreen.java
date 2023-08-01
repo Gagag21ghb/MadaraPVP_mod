@@ -11,19 +11,14 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.fml.common.Mod;
 import ru.amiri.Madara;
 
-import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.UUID;
-
 import static ru.amiri.settings.AddSettings.MY_KEY_FIRST;
 
 @Mod.EventBusSubscriber
-public class SettingsScreen extends Screen {
+public class MainSettingsScreen extends Screen {
     private static final ResourceLocation LOLOLOSHKA = new ResourceLocation(Madara.MOD_ID, "textures/gui/lololoshka.jpg");
     private static final ITextComponent clickableText = new StringTextComponent("test").withStyle();
 
-    public SettingsScreen(ITextComponent p_i51108_1_) {
+    public MainSettingsScreen(ITextComponent p_i51108_1_) {
           super(p_i51108_1_);
     }
     @Override
@@ -33,7 +28,7 @@ public class SettingsScreen extends Screen {
 
     @Override
     public boolean keyPressed(int p_231046_1_, int p_231046_2_, int p_231046_3_) {
-        if (p_231046_1_ == MY_KEY_FIRST.getKey().getValue()) {
+        if (p_231046_1_ == MY_KEY_FIRST.getKey().getValue() || p_231046_1_ == Minecraft.getInstance().options.keyInventory.getKey().getValue()) {
             Minecraft.getInstance().setScreen(null);
             return true;
         }
@@ -44,8 +39,8 @@ public class SettingsScreen extends Screen {
     public void render(MatrixStack matrixStack,  int mouseX, int mouseY, float partialTicks) {
         super.renderBackground(matrixStack);
 
-        int textureWidth = 200;
-        int textureHeight = 180;
+        int textureWidth = 140;
+        int textureHeight = 150;
         int x = (this.width - textureWidth) / 2;
         int y = (this.height - textureHeight) / 2;
 
