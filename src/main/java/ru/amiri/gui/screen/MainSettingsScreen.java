@@ -8,46 +8,15 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraftforge.fml.common.Mod;
 import ru.amiri.Madara;
 
 import static ru.amiri.settings.AddSettings.MY_KEY_FIRST;
 
-@Mod.EventBusSubscriber
-public class MainSettingsScreen extends Screen {
-    private static final ResourceLocation LOLOLOSHKA = new ResourceLocation(Madara.MOD_ID, "textures/gui/lololoshka.jpg");
+public class MainSettingsScreen extends AbstractScreen {
     private static final ITextComponent clickableText = new StringTextComponent("test").withStyle();
 
     public MainSettingsScreen(ITextComponent p_i51108_1_) {
           super(p_i51108_1_);
-    }
-    @Override
-    public boolean isPauseScreen() {
-        return false;
-    }
-
-    @Override
-    public boolean keyPressed(int p_231046_1_, int p_231046_2_, int p_231046_3_) {
-        if (p_231046_1_ == MY_KEY_FIRST.getKey().getValue() || p_231046_1_ == Minecraft.getInstance().options.keyInventory.getKey().getValue()) {
-            Minecraft.getInstance().setScreen(null);
-            return true;
-        }
-        return super.keyPressed(p_231046_1_, p_231046_2_, p_231046_3_);
-    }
-
-    @Override
-    public void render(MatrixStack matrixStack,  int mouseX, int mouseY, float partialTicks) {
-        super.renderBackground(matrixStack);
-
-        int textureWidth = 140;
-        int textureHeight = 150;
-        int x = (this.width - textureWidth) / 2;
-        int y = (this.height - textureHeight) / 2;
-
-        Minecraft.getInstance().textureManager.bind(LOLOLOSHKA);
-        blit(matrixStack, x, y, 0, 0, 200, 160);
-
-        super.render(matrixStack, mouseX, mouseY, partialTicks);
     }
 
     @Override
@@ -60,7 +29,7 @@ public class MainSettingsScreen extends Screen {
         int y = this.height / 2 + 40;
 
         Button myButton = new ButtonCustom(x, y, buttonWidth, buttonHeight, clickableText, button -> {
-            Minecraft.getInstance().player.sendMessage(new StringTextComponent("Text"), Util.NIL_UUID);
+            Minecraft.getInstance().setScreen(new CollorSettingsScreen(new StringTextComponent("collor screen")));
         });
 
         this.addButton(myButton);
