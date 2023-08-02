@@ -33,8 +33,6 @@ public class SettingsRender extends AbstractScreen {
     protected void init() {
         super.init();
 
-        // Ваш код для создания других кнопок...
-
         int toggleButtonWidth = 100;
         int toggleButtonHeight = 20;
         int toggleButtonX = (this.width - toggleButtonWidth) / 2;
