@@ -5,10 +5,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraftforge.common.ForgeConfigSpec;
+import ru.amiri.config.ModConfigMy;
 
 public class SettingsRender extends AbstractScreen {
-    public static boolean renderEffects = true;
 
+    public static boolean renderEffects = true;
     public SettingsRender(ITextComponent p_i51108_1_) {
         super(p_i51108_1_);
     }
