@@ -8,8 +8,7 @@ import net.minecraft.util.text.ITextComponent;
 import ru.amiri.Madara;
 
 public class MainSettingsScreen extends AbstractScreen {
-    FontRenderer fontRender = Minecraft.getInstance().font;
-    private static final ResourceLocation ARTEM = new ResourceLocation(Madara.MOD_ID, "textures/gui/artem.jpg");
+
     public MainSettingsScreen(ITextComponent p_i51108_1_) {
           super(p_i51108_1_);
     }
@@ -22,10 +21,10 @@ public class MainSettingsScreen extends AbstractScreen {
         int x = (this.width - textureWidth) / 2;
         int y = (this.height - textureHeight) / 2;
 
-        Minecraft.getInstance().textureManager.bind(ARTEM);
+        Minecraft.getInstance().textureManager.bind(LOLOLOSHKA);
         blit(matrixStack, x, y, 0, 0, 140, 150);
 
-        fontRender.drawShadow(matrixStack, "Ортем", x, y, 0x40cfff);
+        font.drawShadow(matrixStack, "Ортем", x, y, 0x40cfff);
 
         super.render(matrixStack, mouseX, mouseY, partialTicks);
     }

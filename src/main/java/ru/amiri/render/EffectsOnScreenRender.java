@@ -14,6 +14,8 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.Collection;
 
+import static ru.amiri.gui.screen.SettingsRender.renderEffects;
+
 @Mod.EventBusSubscriber
 public class EffectsOnScreenRender {
     private static final int FLASH_TICKS = 10;
@@ -24,7 +26,7 @@ public class EffectsOnScreenRender {
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Pre event) {
         if (event.getType() == RenderGameOverlayEvent.ElementType.POTION_ICONS) event.setCanceled(true);
 
-        if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR) {
+        if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && renderEffects ) {
             Minecraft mc = Minecraft.getInstance();
             assert mc.player != null;
             Collection<EffectInstance> effects = mc.player.getActiveEffects();
