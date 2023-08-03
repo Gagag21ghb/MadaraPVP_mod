@@ -8,7 +8,7 @@ import net.minecraft.util.text.StringTextComponent;
 import ru.amiri.config.ModConfigMy;
 
 public class SettingsRender extends AbstractScreen {
-    public static boolean renderEffects = ModConfigMy.renderEffects.get(); ;
+    public static boolean renderEffects = ModConfigMy.renderEffects.get();
 
     public SettingsRender(ITextComponent p_i51108_1_) {
         super(p_i51108_1_);
@@ -41,6 +41,7 @@ public class SettingsRender extends AbstractScreen {
 
         Button toggleButton = new Button(toggleButtonX, toggleButtonY, toggleButtonWidth, toggleButtonHeight, new StringTextComponent("Переключить эффекты"), button -> {
             renderEffects = !renderEffects;
+            ModConfigMy.renderEffects.set(renderEffects);
             ModConfigMy.saveConfig();
 
         });
