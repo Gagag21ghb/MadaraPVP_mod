@@ -1,8 +1,6 @@
 package ru.amiri.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
-import ru.amiri.gui.screen.SettingsRender;
-
 public class ModConfigMy {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CONFIG;
@@ -20,8 +18,7 @@ public class ModConfigMy {
 
         CONFIG = BUILDER.build();
     }
-
-    public static void loadConfigValues() {
-        renderEffects.set(SettingsRender.renderEffects);
+    public static void saveConfig() {
+        CONFIG.save();
     }
 }
