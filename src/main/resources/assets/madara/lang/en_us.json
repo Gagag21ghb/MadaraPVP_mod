@@ -1,6 +1,7 @@
 {
   "key.open.screen": "Open settings menu",
 
-  "button.on.of.render": "Render settings"
+  "button.on.of.render": "Render settings",
+  "button.render.effect": "Disable/Enable Effects"
 
 }

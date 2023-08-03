@@ -1,5 +1,6 @@
 package ru.madara.gui.screen;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
@@ -13,13 +14,26 @@ import static ru.madara.settings.AddSettings.MY_KEY_FIRST;
 
 
 public abstract class AbstractScreen extends Screen {
-    public static final ResourceLocation LOLOLOSHKA = new ResourceLocation(Madara.MOD_ID, "textures/gui/lololoshka.jpg");
+    public static final ResourceLocation BLACK = new ResourceLocation(Madara.MOD_ID, "textures/gui/black.jpg");
     protected AbstractScreen(ITextComponent p_i51108_1_) {
         super(p_i51108_1_);
     }
     @Override
     public boolean isPauseScreen() {
         return false;
+    }
+
+    @Override
+    public void render(MatrixStack matrixStack, int p_230430_2_, int p_230430_3_, float p_230430_4_) {
+        Minecraft.getInstance().textureManager.bind(BLACK);
+
+        int textureWidth = 140;
+        int textureHeight = 150;
+        int x = (this.width - textureWidth) / 2;
+        int y = (this.height - textureHeight) / 2;
+
+        blit(matrixStack, x, y, 0, 0, 140, 150);
+        super.render(matrixStack, p_230430_2_, p_230430_3_, p_230430_4_);
     }
 
     @Override

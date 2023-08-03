@@ -1,5 +1,6 @@
 {
   "key.open.screen": "Открыть меню настроек",
 
-  "button.on.of.render": "Настройки рендера"
+  "button.on.of.render": "Настройки рендера",
+  "button.render.effect": "Отключить/Включить отображение эффектов"
 }
