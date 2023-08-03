@@ -1,4 +1,4 @@
-package ru.amiri.gui.screen;
+package ru.madara.gui.screen;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
@@ -7,9 +7,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
-import ru.amiri.Madara;
+import ru.madara.Madara;
 
-import static ru.amiri.settings.AddSettings.MY_KEY_FIRST;
+import static ru.madara.settings.AddSettings.MY_KEY_FIRST;
 
 
 public abstract class AbstractScreen extends Screen {

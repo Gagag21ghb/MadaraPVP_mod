@@ -1,4 +1,4 @@
-package ru.amiri.render;
+package ru.madara.render;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;

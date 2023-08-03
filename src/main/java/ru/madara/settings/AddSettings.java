@@ -1,4 +1,4 @@
-package ru.amiri.settings;
+package ru.madara.settings;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -9,8 +9,8 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.lwjgl.glfw.GLFW;
-import ru.amiri.Madara;
-import ru.amiri.gui.screen.MainSettingsScreen;
+import ru.madara.Madara;
+import ru.madara.gui.screen.MainSettingsScreen;
 
 @Mod.EventBusSubscriber(modid = Madara.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AddSettings {

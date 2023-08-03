@@ -1,11 +1,11 @@
-package ru.amiri.gui.screen;
+package ru.madara.gui.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import ru.amiri.config.ModConfigMy;
+import ru.madara.config.ModConfigMy;
 
 public class SettingsRender extends AbstractScreen {
     public static boolean renderEffects = ModConfigMy.renderEffects.get();

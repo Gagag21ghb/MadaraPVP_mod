@@ -1,4 +1,4 @@
-package ru.amiri.config;
+package ru.madara.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 

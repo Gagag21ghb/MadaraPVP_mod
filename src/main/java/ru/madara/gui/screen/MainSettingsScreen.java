@@ -1,11 +1,8 @@
-package ru.amiri.gui.screen;
+package ru.madara.gui.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import ru.amiri.Madara;
 
 public class MainSettingsScreen extends AbstractScreen {
 

@@ -1,11 +1,11 @@
-package ru.amiri.render;
+package ru.madara.render;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import ru.amiri.Madara;
+import ru.madara.Madara;
 
 @Mod.EventBusSubscriber
 public class CustomCursorRender {

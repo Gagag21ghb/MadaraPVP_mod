@@ -1,4 +1,4 @@
-package ru.amiri.render;
+package ru.madara.render;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

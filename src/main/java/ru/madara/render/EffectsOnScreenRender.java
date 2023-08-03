@@ -1,4 +1,4 @@
-package ru.amiri.render;
+package ru.madara.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
@@ -8,14 +8,13 @@ import net.minecraft.client.renderer.texture.PotionSpriteUploader;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
-import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.Collection;
 
-import static ru.amiri.gui.screen.SettingsRender.renderEffects;
+import static ru.madara.gui.screen.SettingsRender.renderEffects;
 
 @Mod.EventBusSubscriber
 public class EffectsOnScreenRender {
