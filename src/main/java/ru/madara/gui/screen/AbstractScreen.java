@@ -57,7 +57,7 @@ public abstract class AbstractScreen extends Screen {
         Button onOfRender = new Button(x, y, buttonWidth, buttonHeight, new TranslationTextComponent("button.on.of.render"), button -> {
             Minecraft.getInstance().setScreen(new SettingsRender(new StringTextComponent("Settings render")));
         });
-
         this.addButton(onOfRender);
+
     }
 }

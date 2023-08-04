@@ -13,8 +13,6 @@ public class ModConfigMy {
 
         renderEffects = BUILDER
                 .comment("Enable or disable effects rendering")
-
-
                 .define("render_effects", true);
 
         BUILDER.pop();
