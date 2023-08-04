@@ -4,13 +4,14 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.widget.button.Button;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
 import org.lwjgl.opengl.GL11;
+import ru.madara.Madara;
 import ru.madara.config.ModConfigMy;
 
 public class SettingsRender extends AbstractScreen {
     public static boolean renderEffects = ModConfigMy.renderEffects.get();
-
     public SettingsRender(ITextComponent p_i51108_1_) {
         super(p_i51108_1_);
     }
@@ -26,19 +27,18 @@ public class SettingsRender extends AbstractScreen {
     protected void init() {
         super.init();
 
-        int toggleButtonWidth = 10;
-        int toggleButtonHeight = 10;
-        int toggleButtonX = (this.width - toggleButtonWidth) / 2;
-        int toggleButtonY = this.height / 2 + 70;
+        int toggleButtonSize = 7;
 
-        Button toggleButton = new RenderButton(toggleButtonX, toggleButtonY, toggleButtonWidth, toggleButtonHeight,
+        int toggleButtonX = (this.width - toggleButtonSize ) / 2;
+        int toggleButtonY = this.height / 2;
+
+        Button toggleButton = new RenderButton(toggleButtonX, toggleButtonY, toggleButtonSize , toggleButtonSize,
                  StringTextComponent.EMPTY, button -> {
             renderEffects = !renderEffects;
             ModConfigMy.renderEffects.set(renderEffects);
             ModConfigMy.saveConfig();
 
         });
-
         this.addButton(toggleButton);
 
     }
@@ -51,10 +51,17 @@ public class SettingsRender extends AbstractScreen {
         public void renderButton(MatrixStack matrixStack, int p_230431_2_, int p_230431_3_, float p_230431_4_) {
             float textScale = 0.7f;
             matrixStack.pushPose();
+
             matrixStack.scale(textScale, textScale, 1.0f);
-            font.draw(matrixStack, new TranslationTextComponent("button.render.effect"), 50, 50, 0x40cfff);
+            int colorOn = 0xFF00FF00; // Зеленый цвет для включенного состояния
+            int colorOff = 0xFFAAAAAA; // Серый цвет для выключенного состояния
+
+
+            font.draw(matrixStack, new TranslationTextComponent("button.render.effect"), 50, 50, 0xffffff);
             matrixStack.popPose();
+
             super.renderButton(matrixStack, p_230431_2_, p_230431_3_, p_230431_4_);
         }
+
     }
 }
