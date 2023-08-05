@@ -1,4 +1,4 @@
-package ru.madara.gui.screen;
+package ru.madara.gui.screen.common;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
@@ -9,6 +9,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import ru.madara.Madara;
+import ru.madara.gui.screen.SettingsRender;
 
 import static ru.madara.settings.AddSettings.MY_KEY_FIRST;
 

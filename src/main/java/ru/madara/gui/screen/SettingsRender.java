@@ -4,11 +4,9 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.widget.button.Button;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
-import org.lwjgl.opengl.GL11;
-import ru.madara.Madara;
 import ru.madara.config.ModConfigMy;
+import ru.madara.gui.screen.common.AbstractScreen;
 
 public class SettingsRender extends AbstractScreen {
     public static boolean renderEffects = ModConfigMy.renderEffects.get();
@@ -53,10 +51,6 @@ public class SettingsRender extends AbstractScreen {
             matrixStack.pushPose();
 
             matrixStack.scale(textScale, textScale, 1.0f);
-            int colorOn = 0xFF00FF00; // Зеленый цвет для включенного состояния
-            int colorOff = 0xFFAAAAAA; // Серый цвет для выключенного состояния
-
-
             font.draw(matrixStack, new TranslationTextComponent("button.render.effect"), 50, 50, 0xffffff);
             matrixStack.popPose();
 
