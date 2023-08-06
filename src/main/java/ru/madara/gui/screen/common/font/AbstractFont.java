@@ -54,7 +54,7 @@ public abstract class AbstractFont   {
         GlStateManager._bindTexture(0);
     }
 
-    public static final Font getFont(String fileName, int style, int size) {
+    public static Font getFont(String fileName, int style, int size) {
         String path = TestRender.FONT_DIR.concat(fileName);
         Font font = null;
 
