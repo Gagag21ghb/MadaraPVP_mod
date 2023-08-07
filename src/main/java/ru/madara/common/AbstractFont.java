@@ -1,4 +1,4 @@
-package ru.madara.gui.screen.common.font;
+package ru.madara.common;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -16,8 +16,8 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.vector.Matrix4f;
-import ru.madara.Madara;
-import ru.madara.gui.screen.common.Wrapper;
+import ru.madara.Wrapper;
+import ru.madara.common.font.TextureHelper;
 
 public abstract class AbstractFont   {
     Tessellator TESSELLATOR = Tessellator.getInstance();
@@ -54,7 +54,7 @@ public abstract class AbstractFont   {
     }
 
     public static Font getFont(String fileName, int style, int size) {
-        String path = Madara.FONT_DIR.concat(fileName);
+        String path = Wrapper.FONT_DIR.concat(fileName);
         Font font = null;
 
         try {
@@ -128,5 +128,7 @@ public abstract class AbstractFont   {
         public int height;
 
     }
+
+
 
 }

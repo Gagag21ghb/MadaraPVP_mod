@@ -1,16 +1,13 @@
 package ru.madara.render;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import ru.madara.gui.screen.common.Wrapper;
+import ru.madara.Wrapper;
 
 @Mod.EventBusSubscriber
 public class ArmorAndWeaponsRender implements Wrapper {

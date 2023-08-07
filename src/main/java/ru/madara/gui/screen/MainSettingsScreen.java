@@ -2,7 +2,7 @@ package ru.madara.gui.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.util.text.ITextComponent;
-import ru.madara.gui.screen.common.AbstractScreen;
+import ru.madara.common.AbstractScreen;
 
 public class MainSettingsScreen extends AbstractScreen {
 

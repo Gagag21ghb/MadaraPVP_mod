@@ -1,8 +1,11 @@
-package ru.madara.gui.screen.common.font;
+package ru.madara.common.font;
 import java.awt.Font;
 import java.util.Locale;
 
 import net.minecraft.util.math.vector.Matrix4f;
+import ru.madara.common.AbstractFont;
+import ru.madara.common.Lang;
+
 public class StyledFont {
 
     private final GlyphPage regular, bold, italic, boldItalic;

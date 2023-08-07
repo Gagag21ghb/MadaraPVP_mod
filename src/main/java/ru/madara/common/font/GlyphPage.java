@@ -1,4 +1,4 @@
-package ru.madara.gui.screen.common.font;
+package ru.madara.common.font;
 
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -11,6 +11,7 @@ import java.util.Locale;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.minecraft.util.math.vector.Matrix4f;
+import ru.madara.common.AbstractFont;
 
 public final class GlyphPage extends AbstractFont {
 

@@ -1,6 +1,8 @@
-package ru.madara.gui.screen.common.font;
+package ru.madara.common.font;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import ru.madara.common.AbstractFont;
+import ru.madara.common.Lang;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;

@@ -3,11 +3,11 @@ package ru.madara.gui.screen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.*;
-import ru.madara.Madara;
 import ru.madara.config.ModConfigMy;
-import ru.madara.gui.screen.common.AbstractScreen;
+import ru.madara.common.AbstractScreen;
 
-import ru.madara.gui.screen.common.font.StyledFontRenderer;
+import ru.madara.Wrapper;
+import ru.madara.common.font.StyledFontRenderer;
 
 import java.awt.Color;
 
@@ -42,7 +42,7 @@ public class SettingsRender extends AbstractScreen {
         this.addButton(toggleButton);
 
     }
-    public static class RenderButton extends Button {
+    public static class RenderButton extends Button implements Wrapper {
         public RenderButton(int p_i232255_1_, int p_i232255_2_, int p_i232255_3_, int p_i232255_4_, ITextComponent p_i232255_5_, IPressable p_i232255_6_) {
             super(p_i232255_1_, p_i232255_2_, p_i232255_3_, p_i232255_4_, p_i232255_5_, p_i232255_6_);
         }
@@ -52,7 +52,7 @@ public class SettingsRender extends AbstractScreen {
             matrixStack.pushPose();
 
             matrixStack.scale(textScale, textScale, 1.0f);
-            StyledFontRenderer.drawShadowedCenteredYString(matrixStack, Madara.font, "ON/OFF отображение эффектов", 40, 60 - Madara.font.getFontHeight(), Color.WHITE);
+            StyledFontRenderer.drawShadowedCenteredYString(matrixStack, font, "ON/OFF отображение эффектов", 40, 60 - font.getFontHeight(), Color.WHITE);
 
             matrixStack.popPose();
 

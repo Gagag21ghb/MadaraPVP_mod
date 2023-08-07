@@ -1,4 +1,4 @@
-package ru.madara.gui.screen.common;
+package ru.madara.common;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;

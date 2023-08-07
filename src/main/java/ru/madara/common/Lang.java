@@ -1,4 +1,4 @@
-package ru.madara.gui.screen.common.font;
+package ru.madara.common;
 
 public enum Lang {
     ENG(new int[] {31, 127, 0, 0}),
