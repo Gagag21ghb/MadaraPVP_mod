@@ -1,12 +1,15 @@
 package ru.madara.gui.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.*;
+import ru.madara.Madara;
 import ru.madara.config.ModConfigMy;
 import ru.madara.gui.screen.common.AbstractScreen;
+
+import ru.madara.gui.screen.common.font.StyledFontRenderer;
+
+import java.awt.Color;
 
 public class SettingsRender extends AbstractScreen {
     public static boolean renderEffects = ModConfigMy.renderEffects.get();
@@ -16,7 +19,6 @@ public class SettingsRender extends AbstractScreen {
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         super.renderBackground(matrixStack);
-
 
         super.render(matrixStack, mouseX, mouseY, partialTicks);
     }
@@ -41,7 +43,6 @@ public class SettingsRender extends AbstractScreen {
 
     }
     public static class RenderButton extends Button {
-        FontRenderer font = Minecraft.getInstance().font;
         public RenderButton(int p_i232255_1_, int p_i232255_2_, int p_i232255_3_, int p_i232255_4_, ITextComponent p_i232255_5_, IPressable p_i232255_6_) {
             super(p_i232255_1_, p_i232255_2_, p_i232255_3_, p_i232255_4_, p_i232255_5_, p_i232255_6_);
         }
@@ -51,7 +52,8 @@ public class SettingsRender extends AbstractScreen {
             matrixStack.pushPose();
 
             matrixStack.scale(textScale, textScale, 1.0f);
-            font.draw(matrixStack, new TranslationTextComponent("button.render.effect"), 50, 50, 0xffffff);
+            StyledFontRenderer.drawShadowedCenteredYString(matrixStack, Madara.font, "ON/OFF отображение эффектов", 40, 60 - Madara.font.getFontHeight(), Color.WHITE);
+
             matrixStack.popPose();
 
             super.renderButton(matrixStack, p_230431_2_, p_230431_3_, p_230431_4_);

@@ -17,8 +17,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.vector.Matrix4f;
 import ru.madara.Madara;
-import ru.madara.gui.screen.common.TestRender;
-import ru.madara.render.ArmorAndWeaponsRender;
+import ru.madara.gui.screen.common.Wrapper;
 
 public abstract class AbstractFont   {
     Tessellator TESSELLATOR = Tessellator.getInstance();
@@ -55,11 +54,11 @@ public abstract class AbstractFont   {
     }
 
     public static Font getFont(String fileName, int style, int size) {
-        String path = TestRender.FONT_DIR.concat(fileName);
+        String path = Madara.FONT_DIR.concat(fileName);
         Font font = null;
 
         try {
-            font = Font.createFont(Font.TRUETYPE_FONT, TestRender.class.getResourceAsStream(path))
+            font = Font.createFont(Font.TRUETYPE_FONT, Wrapper.class.getResourceAsStream(path))
                     .deriveFont(style, size);
         } catch (FontFormatException | IOException e) {e.printStackTrace();}
 

@@ -11,15 +11,16 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import ru.madara.gui.screen.common.Wrapper;
 
 @Mod.EventBusSubscriber()
-public class HealthAndFeedBarRenderer {
+public class HealthAndFeedBarRenderer implements Wrapper {
     static ResourceLocation textureLocation = new ResourceLocation("minecraft", "textures/particle/heart.png");
     static ResourceLocation textureLocationFeed = new ResourceLocation("minecraft", "textures/item/cooked_beef.png");
 
     @SubscribeEvent
     public static void onRenderLiving(RenderLivingEvent.Post<?, ?> event) {
-        Minecraft mc = Minecraft.getInstance();
+
         if (!(event.getEntity() instanceof PlayerEntity) || event.isCanceled()) return;
         if (mc.screen != null) return;
         assert mc.player != null;
@@ -28,7 +29,6 @@ public class HealthAndFeedBarRenderer {
 
         PlayerEntity player = (PlayerEntity) event.getEntity();
 
-        FontRenderer fontRenderer = mc.font;
         MatrixStack matrixStack = event.getMatrixStack();
 
         int currentHealth = (int) Math.ceil(player.getHealth());

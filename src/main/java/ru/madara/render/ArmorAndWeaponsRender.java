@@ -10,14 +10,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import ru.madara.gui.screen.common.Wrapper;
+
 @Mod.EventBusSubscriber
-public class ArmorAndWeaponsRender {
+public class ArmorAndWeaponsRender implements Wrapper {
     @SubscribeEvent
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Post event) {
         if (event.getType() == RenderGameOverlayEvent.ElementType.ALL) {
-            Minecraft mc = Minecraft.getInstance();
-            PlayerEntity playerEntity = mc.player;
-            FontRenderer fontRenderer = mc.font;
 
             int screenWidth = event.getWindow().getGuiScaledWidth();
             int screenHeight = event.getWindow().getGuiScaledHeight();

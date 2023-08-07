@@ -19,7 +19,7 @@ java {
 
 minecraft {
     jar {
-        archiveFileName.set('madara-1.16.5.jar') // Замените 'новое_имя_мода' на желаемое имя файла мода
+        archiveFileName.set('madara-1.16.5.jar')
     }
     mappings channel: mapping_channel, version: mapping_version
 
