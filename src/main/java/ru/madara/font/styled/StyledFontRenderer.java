@@ -1,4 +1,4 @@
-package ru.madara.common.font;
+package ru.madara.font.styled;
 import java.awt.Color;
 import java.util.Locale;
 

@@ -17,7 +17,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.vector.Matrix4f;
 import ru.madara.Wrapper;
-import ru.madara.common.font.TextureHelper;
+import ru.madara.font.TextureHelper;
 
 public abstract class AbstractFont   {
     Tessellator TESSELLATOR = Tessellator.getInstance();
@@ -128,7 +128,4 @@ public abstract class AbstractFont   {
         public int height;
 
     }
-
-
-
 }

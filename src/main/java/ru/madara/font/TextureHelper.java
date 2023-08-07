@@ -1,4 +1,4 @@
-package ru.madara.common.font;
+package ru.madara.font;
 import java.awt.image.BufferedImage;
 import java.nio.BufferOverflowException;
 import java.nio.ByteBuffer;

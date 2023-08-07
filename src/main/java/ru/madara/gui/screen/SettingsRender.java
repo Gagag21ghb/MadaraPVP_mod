@@ -7,7 +7,7 @@ import ru.madara.config.ModConfigMy;
 import ru.madara.common.AbstractScreen;
 
 import ru.madara.Wrapper;
-import ru.madara.common.font.StyledFontRenderer;
+import ru.madara.font.styled.StyledFontRenderer;
 
 import java.awt.Color;
 
