@@ -70,12 +70,13 @@ public final class GlyphPage extends AbstractFont {
         RenderSystem.recordRenderCall(() -> setTexture(image));
     }
 
-    public float renderGlyph(Matrix4f matrix, char c, float x, float y, float red, float green, float blue, float alpha) {
-        bindTex();
+    public float renderGlyph(Matrix4f matrix, char c, float x, float y, float red, float green, float blue, float alpha) { bindTex();
+        float glyphWidth = super.getWidth(c);
         float w = super.renderGlyph(matrix, c, x, y, red, green, blue, alpha) - italicSpacing;
         unbindTex();
 
-        return w;
+        return w + (glyphWidth - w);
+
     }
 
     public float getStretching() {
