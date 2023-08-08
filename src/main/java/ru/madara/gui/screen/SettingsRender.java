@@ -3,10 +3,12 @@ package ru.madara.gui.screen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.*;
+import ru.madara.common.Lang;
 import ru.madara.config.ModConfigMy;
 import ru.madara.common.AbstractScreen;
 
 import ru.madara.Wrapper;
+import ru.madara.font.styled.StyledFont;
 import ru.madara.font.styled.StyledFontRenderer;
 
 import java.awt.Color;
@@ -48,11 +50,12 @@ public class SettingsRender extends AbstractScreen {
         }
         @Override
         public void renderButton(MatrixStack matrixStack, int p_230431_2_, int p_230431_3_, float p_230431_4_) {
+
             float textScale = 0.7f;
             matrixStack.pushPose();
 
             matrixStack.scale(textScale, textScale, 1.0f);
-            StyledFontRenderer.drawShadowedCenteredYString(matrixStack, font, "ON/OFF отображение эффектов", 40, 60 - font.getFontHeight(), Color.WHITE);
+            StyledFontRenderer.drawShadowedCenteredYString(matrixStack, font, new TranslationTextComponent("button.render.effect"), 40, 60 - font.getFontHeight(), Color.WHITE);
 
             matrixStack.popPose();
 

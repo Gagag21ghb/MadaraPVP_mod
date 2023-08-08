@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.text.ITextComponent;
 import org.lwjgl.opengl.GL30;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -15,8 +16,6 @@ import net.minecraft.util.math.vector.Matrix4f;
 public class StyledFontRenderer {
   static   Tessellator TESSELLATOR = Tessellator.getInstance();
   static   BufferBuilder BUILDER = TESSELLATOR.getBuilder();
-
-
     public static final String STYLE_CODES = "0123456789abcdefklmnor";
         public static final int[] COLOR_CODES = new int[32];
 
@@ -41,61 +40,17 @@ public class StyledFontRenderer {
             }
         }
 
-        public static float drawString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color) {
-            return renderString(matrices, font, text, x, y, false, color);
-        }
 
-        public static float drawCenteredXString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color) {
-            return renderString(matrices, font, text, x - font.getWidth(text) / 2.0f, y, false, color);
-        }
-
-        public static float drawCenteredYString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color) {
-            return renderString(matrices, font, text, x, y + font.getLifting() / 2.0f + 0.5f, false, color);
-        }
-
-        public static float drawCenteredXYString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color) {
-            return renderString(matrices, font, text, x - font.getWidth(text) / 2.0f, y + font.getLifting() / 2.0f + 0.5f, false, color);
-        }
-
-        public static float drawShadowedString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color) {
-            return renderStringWithShadow(matrices, font, text, x, y, color, getShadowColor(color));
-        }
-
-        public static float drawShadowedCenteredXString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color) {
-            return renderStringWithShadow(matrices, font, text, x - font.getWidth(text) / 2.0f, y, color, getShadowColor(color));
-        }
-
-        public static float drawShadowedCenteredYString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color) {
+        public static float drawShadowedCenteredYString(MatrixStack matrices, StyledFont font, ITextComponent text, double x, double y, Color color) {
             return renderStringWithShadow(matrices, font, text, x, y + font.getLifting() / 2.0f + 0.5f, color, getShadowColor(color));
         }
-
-        public static float drawShadowedCenteredXYString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color) {
-            return renderStringWithShadow(matrices, font, text, x - font.getWidth(text) / 2.0f, y + font.getLifting() / 2.0f + 0.5f, color, getShadowColor(color));
-        }
-
-        public static float drawShadowedString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color, Color shadowColor) {
-            return renderStringWithShadow(matrices, font, text, x, y, color, shadowColor);
-        }
-
-        public static float drawShadowedCenteredXString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color, Color shadowColor) {
-            return renderStringWithShadow(matrices, font, text, x - font.getWidth(text) / 2.0f, y, color, shadowColor);
-        }
-
-        public static float drawShadowedCenteredYString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color, Color shadowColor) {
-            return renderStringWithShadow(matrices, font, text, x, y + font.getLifting() / 2.0f + 0.5f, color, shadowColor);
-        }
-
-        public static float drawShadowedCenteredXYString(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color, Color shadowColor) {
-            return renderStringWithShadow(matrices, font, text, x - font.getWidth(text) / 2.0f, y + font.getLifting() / 2.0f + 0.5f, color, shadowColor);
-        }
-
-        private static float renderStringWithShadow(MatrixStack matrices, StyledFont font, String text, double x, double y, Color color, Color shadowColor) {
+        private static float renderStringWithShadow(MatrixStack matrices, StyledFont font, ITextComponent text, double x, double y, Color color, Color shadowColor) {
             renderString(matrices, font, text, x + 1.0f, y, true, shadowColor);
             return renderString(matrices, font, text, x, y - 1.0f, false, color) + 1.0f;
         }
 
         // returns string width
-        private static float renderString(MatrixStack matrices, StyledFont font, String text, double x, double y, boolean shadow, Color color) {
+        private static float renderString(MatrixStack matrices, StyledFont font, ITextComponent text, double x, double y, boolean shadow, Color color) {
             y -= font.getLifting();
 
             float startPos = (float) x * 2.0f;
@@ -117,12 +72,12 @@ public class StyledFontRenderer {
 
             Matrix4f matrix = matrices.last().pose();
 
-            for(int i = 0; i < text.length(); i++) {
-                char c0 = text.charAt(i);
+            for(int i = 0; i < text.getString().length(); i++) {
+                char c0 = text.getString().charAt(i);
 
-                if (c0 == 167 && i + 1 < text.length() &&
-                        STYLE_CODES.indexOf(text.toLowerCase(Locale.ENGLISH).charAt(i + 1)) != -1) {
-                    int i1 = STYLE_CODES.indexOf(text.toLowerCase(Locale.ENGLISH).charAt(i + 1));
+                if (c0 == 167 && i + 1 < text.getString().length() &&
+                        STYLE_CODES.indexOf(text.getString().toLowerCase(Locale.ENGLISH).charAt(i + 1)) != -1) {
+                    int i1 = STYLE_CODES.indexOf(text.getString().toLowerCase(Locale.ENGLISH).charAt(i + 1));
 
                     if (i1 < 16) {
                         bold = false;

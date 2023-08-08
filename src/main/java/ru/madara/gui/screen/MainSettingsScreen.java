@@ -2,6 +2,7 @@ package ru.madara.gui.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import ru.madara.common.AbstractScreen;
 
 public class MainSettingsScreen extends AbstractScreen {
@@ -14,7 +15,7 @@ public class MainSettingsScreen extends AbstractScreen {
         super.renderBackground(matrixStack);
 
 
-        font.drawShadow(matrixStack, "Ортем", 70, 50, 0x40cfff);
+        font.drawShadow(matrixStack, new TranslationTextComponent("Ортем"), 70, 50, 0x40cfff);
 
         super.render(matrixStack, mouseX, mouseY, partialTicks);
     }
