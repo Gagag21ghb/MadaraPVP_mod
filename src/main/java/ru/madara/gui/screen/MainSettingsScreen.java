@@ -14,8 +14,7 @@ public class MainSettingsScreen extends AbstractScreen {
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         super.renderBackground(matrixStack);
 
-
-        font.drawShadow(matrixStack, new TranslationTextComponent("Ортем"), 70, 50, 0x40cfff);
+        fontRenderer.drawShadow(matrixStack, new TranslationTextComponent("Ортем"), 70, 50, 0x40cfff);
 
         super.render(matrixStack, mouseX, mouseY, partialTicks);
     }

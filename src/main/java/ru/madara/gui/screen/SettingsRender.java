@@ -14,7 +14,7 @@ import ru.madara.font.styled.StyledFontRenderer;
 import java.awt.Color;
 
 public class SettingsRender extends AbstractScreen {
-    public static boolean renderEffects = ModConfigMy.renderEffects.get();
+    public static boolean renderEffects = ModConfigMy.renderEffectsConfig.get();
     public SettingsRender(ITextComponent p_i51108_1_) {
         super(p_i51108_1_);
     }
@@ -37,7 +37,7 @@ public class SettingsRender extends AbstractScreen {
         Button toggleButton = new RenderButton(toggleButtonX, toggleButtonY, toggleButtonSize , toggleButtonSize,
                  StringTextComponent.EMPTY, button -> {
             renderEffects = !renderEffects;
-            ModConfigMy.renderEffects.set(renderEffects);
+            ModConfigMy.renderEffectsConfig.set(renderEffects);
             ModConfigMy.saveConfig();
 
         });
@@ -51,13 +51,7 @@ public class SettingsRender extends AbstractScreen {
         @Override
         public void renderButton(MatrixStack matrixStack, int p_230431_2_, int p_230431_3_, float p_230431_4_) {
 
-            float textScale = 0.7f;
-            matrixStack.pushPose();
-
-            matrixStack.scale(textScale, textScale, 1.0f);
             StyledFontRenderer.drawShadowedCenteredYString(matrixStack, font, new TranslationTextComponent("button.render.effect"), 40, 60 - font.getFontHeight(), Color.WHITE);
-
-            matrixStack.popPose();
 
             super.renderButton(matrixStack, p_230431_2_, p_230431_3_, p_230431_4_);
         }

@@ -9,12 +9,13 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import ru.madara.Madara;
+import ru.madara.Wrapper;
 import ru.madara.gui.screen.SettingsRender;
 
 import static ru.madara.settings.AddSettings.MY_KEY_FIRST;
 
 
-public abstract class AbstractScreen extends Screen {
+public abstract class AbstractScreen extends Screen implements Wrapper {
     public static final ResourceLocation BLACK = new ResourceLocation(Madara.MOD_ID, "textures/gui/background.png");
     protected AbstractScreen(ITextComponent p_i51108_1_) {
         super(p_i51108_1_);

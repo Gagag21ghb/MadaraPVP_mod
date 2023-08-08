@@ -6,7 +6,7 @@ public enum Lang {
 
     private int[] charCodes;
 
-    private Lang(int[] charCodes) {
+    Lang(int[] charCodes) {
         this.charCodes = charCodes;
     }
     public int[] getCharCodes() {
