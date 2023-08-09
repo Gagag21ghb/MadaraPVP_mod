@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 
@@ -58,7 +59,7 @@ public abstract class AbstractFont   {
         Font font = null;
 
         try {
-            font = Font.createFont(Font.TRUETYPE_FONT, Wrapper.class.getResourceAsStream(path))
+            font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Wrapper.class.getResourceAsStream(path)))
                     .deriveFont(style, size);
         } catch (FontFormatException | IOException e) {e.printStackTrace();}
 

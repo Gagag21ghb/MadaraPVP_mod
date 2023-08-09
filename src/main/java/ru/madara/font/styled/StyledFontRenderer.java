@@ -76,8 +76,9 @@ public class StyledFontRenderer {
                 char c0 = text.getString().charAt(i);
 
                 if (c0 == 167 && i + 1 < text.getString().length() &&
-                        STYLE_CODES.indexOf(text.getString().toLowerCase(Locale.ENGLISH).charAt(i + 1)) != -1) {
-                    int i1 = STYLE_CODES.indexOf(text.getString().toLowerCase(Locale.ENGLISH).charAt(i + 1));
+                        STYLE_CODES.indexOf(Character.toLowerCase(text.getString().charAt(i + 1))) != -1) {
+                    int i1 = STYLE_CODES.indexOf(Character.toLowerCase(text.getString().charAt(i + 1)));
+
 
                     if (i1 < 16) {
                         bold = false;

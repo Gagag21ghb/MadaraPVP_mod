@@ -41,8 +41,8 @@ public class StyledFont {
             char c0 = text.charAt(i);
 
             if (c0 == 167 && i + 1 < text.length() &&
-                    StyledFontRenderer.STYLE_CODES.indexOf(text.toLowerCase(Locale.ENGLISH).charAt(i + 1)) != -1) {
-                int i1 = StyledFontRenderer.STYLE_CODES.indexOf(text.toLowerCase(Locale.ENGLISH).charAt(i + 1));
+                    StyledFontRenderer.STYLE_CODES.indexOf(Character.toLowerCase(text.charAt(i + 1))) != -1) {
+                int i1 = StyledFontRenderer.STYLE_CODES.indexOf(Character.toLowerCase(text.charAt(i + 1)));
 
                 if(i1 < 16) {
                     bold = false;
