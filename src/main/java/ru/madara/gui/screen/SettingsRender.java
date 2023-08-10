@@ -48,8 +48,6 @@ public class SettingsRender extends AbstractScreen {
         private final ResourceLocation buttonTextureOn = new ResourceLocation("minecraft", "textures/block/dirt.png");
         private final ResourceLocation buttonTextureOff = new ResourceLocation("minecraft", "textures/block/grass_block.png");
 
-
-
         public SmallToggleButton(int p_i232254_1_, int p_i232254_2_, int p_i232254_3_, int p_i232254_4_, ITextComponent p_i232254_5_) {
             super(p_i232254_1_, p_i232254_2_, p_i232254_3_, p_i232254_4_, p_i232254_5_);
         }
@@ -64,12 +62,9 @@ public class SettingsRender extends AbstractScreen {
         @Override
         public void renderButton(MatrixStack matrixStack, int mouseX, int mouseY, float delta) {
 
-            mc.getTextureManager().bind(isHovered() ? buttonTextureOn : buttonTextureOff);
+
             StyledFontRenderer.drawShadowedCenteredYString(matrixStack, font, new TranslationTextComponent("button.render.effect"), 40, 60 - font.getFontHeight(), Color.WHITE);
-            int textureWidth = 16;
-            int textureHeight = 16;
-            int textureX = 0; // начальная координата X текстуры на текстурном атласе
-            int textureY = 0; // начальная координата Y текстуры на текстурном атласе
+
 
             // Определите размеры и координаты кнопки
             int buttonWidth = this.getWidth();
@@ -77,10 +72,15 @@ public class SettingsRender extends AbstractScreen {
             int buttonX = this.x;
             int buttonY = this.y;
 
-            // Отрисовка текстуры на кнопке
-            AbstractGui.blit(matrixStack, buttonX, buttonY, textureX, textureY, buttonWidth, buttonHeight, textureWidth, textureHeight);
+            int red = renderEffects ? 0 : 255;    // Красный цвет для выключенной кнопки
+            int green = renderEffects ? 255 : 0;  // Зеленый цвет для включенной кнопки
+            int blue = 0;
+            int alpha = 255; // Непрозрачность
 
+            int argbColor = (alpha << 24) | (red << 16) | (green << 8) | blue;
 
+            // Заливка квадрата на кнопке соответствующим цветом
+            AbstractGui.fill(matrixStack, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight, argbColor);
 
 
         }
