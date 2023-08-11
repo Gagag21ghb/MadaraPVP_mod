@@ -23,8 +23,6 @@ public class HealthAndFeedBarRenderer implements Wrapper {
         if (mc.screen != null) return;
         assert mc.player != null;
         if(event.getEntity().hasEffect(Effects.INVISIBILITY)) return;
-
-
         PlayerEntity player = (PlayerEntity) event.getEntity();
 
         MatrixStack matrixStack = event.getMatrixStack();

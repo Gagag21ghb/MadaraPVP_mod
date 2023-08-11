@@ -26,7 +26,7 @@ public class EffectsOnScreenRender {
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Pre event) {
         if (event.getType() == RenderGameOverlayEvent.ElementType.POTION_ICONS) event.setCanceled(true);
 
-        if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR && renderEffects ) {
+        if (event.getType() == RenderGameOverlayEvent.ElementType.ALL && renderEffects ) {
             Minecraft mc = Minecraft.getInstance();
             assert mc.player != null;
             Collection<EffectInstance> effects = mc.player.getActiveEffects();

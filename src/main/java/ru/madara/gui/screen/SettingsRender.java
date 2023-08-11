@@ -23,13 +23,19 @@ public class SettingsRender extends AbstractScreen {
     protected void init() {
         super.init();
 
-        int toggleButtonSize = 7;
+        int toggleButtonSize = 5;
 
         int toggleButtonX = (this.width - toggleButtonSize ) / 2;
         int toggleButtonY = this.height / 2;
 
         RenderSmallToggle toggleButton = new RenderSmallToggle(toggleButtonX, toggleButtonY, toggleButtonSize , toggleButtonSize, StringTextComponent.EMPTY,
-                new TranslationTextComponent("button.render.effect"));
+                new TranslationTextComponent("button.render.effect"),
+                onPress ->{
+            renderEffects = !renderEffects;
+            ModConfigMy.renderEffectsConfig.set(renderEffects);
+            ModConfigMy.saveConfig();
+
+        });
 
         this.addButton(toggleButton);
 

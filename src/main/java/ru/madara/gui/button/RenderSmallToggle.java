@@ -10,15 +10,21 @@ import ru.madara.config.ModConfigMy;
 import ru.madara.font.styled.StyledFontRenderer;
 
 import java.awt.*;
+import java.util.function.Consumer;
 
 import static ru.madara.gui.screen.SettingsRender.renderEffects;
 
 public class RenderSmallToggle extends Widget implements Wrapper {
+    private final Consumer<Widget> onPress; // Поле onPress
+
     TranslationTextComponent TextInButton;
-    public RenderSmallToggle(int p_i232254_1_, int p_i232254_2_, int p_i232254_3_, int p_i232254_4_, ITextComponent p_i232254_5_, TranslationTextComponent text) {
+    public RenderSmallToggle(int p_i232254_1_, int p_i232254_2_, int p_i232254_3_, int p_i232254_4_, ITextComponent p_i232254_5_, TranslationTextComponent text, Consumer<Widget> onPress) {
         super(p_i232254_1_, p_i232254_2_, p_i232254_3_, p_i232254_4_, p_i232254_5_);
 
         TextInButton = text;
+
+        this.onPress = onPress; // Присваиваем логику onPress
+
     }
 
     @Override
@@ -43,11 +49,12 @@ public class RenderSmallToggle extends Widget implements Wrapper {
         AbstractGui.fill(matrixStack, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight, argbColor);
 
     }
-    @Override
-    public void onClick(double mouseX, double mouseY) {
-        renderEffects = !renderEffects;
-        ModConfigMy.renderEffectsConfig.set(renderEffects);
-        ModConfigMy.saveConfig();
-    }
 
+    @Override
+    public void onClick(double p_230982_1_, double p_230982_3_) {
+        super.onClick(p_230982_1_, p_230982_3_);
+        if (onPress != null) {
+            onPress.accept(this);
+        }
+    }
 }
