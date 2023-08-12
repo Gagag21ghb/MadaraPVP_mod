@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
 public class SettingsRender extends AbstractScreen {
     public static boolean renderEffects = ModConfigMy.renderEffectsConfig.get();
 
@@ -35,7 +36,8 @@ public class SettingsRender extends AbstractScreen {
         int toggleButtonX = (this.width - toggleButtonSize) / 2;
         int toggleButtonY = this.height / 2;
 
-        RenderSmallToggle toggleButton = new RenderSmallToggle(toggleButtonX, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
+        RenderSmallToggle toggleButton, r2;
+        toggleButton = new RenderSmallToggle(toggleButtonX, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
                 new TranslationTextComponent("button.render.effect"),
                 onPress -> {
                     renderEffects = !renderEffects;
@@ -43,9 +45,14 @@ public class SettingsRender extends AbstractScreen {
                     ModConfigMy.saveConfig();
 
                 });
+        r2 = new RenderSmallToggle(toggleButtonX + 10, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
+                new TranslationTextComponent("button.render.effect"),
+                onPress -> {
+                    mc.player.sendMessage(new StringTextComponent("sss"), UUID.randomUUID());
+                });
 
         this.addButton(toggleButton);
-
+        this.addButton(r2);
 
     }
 }
