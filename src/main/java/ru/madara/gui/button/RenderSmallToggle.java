@@ -39,11 +39,8 @@ public class RenderSmallToggle extends Widget implements Wrapper {
         int buttonY = this.y;
 
 
-        int red =  loadedToggleButtonState ? 0 : 255;
-        int green = loadedToggleButtonState ? 255 : 0;
-        int blue = 0;
-        int alpha = 255;
-        int argbColor = (alpha << 24) | (red << 16) | (green << 8) | blue;
+        int argbColor =  loadedToggleButtonState ? Color.red.getRGB() : Color.green.getRGB();
+
 
         AbstractGui.fill(matrixStack, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight, argbColor);
     }
