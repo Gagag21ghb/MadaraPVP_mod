@@ -7,9 +7,6 @@ import ru.madara.common.AbstractScreen;
 
 import ru.madara.gui.button.RenderSmallToggle;
 
-import java.util.UUID;
-
-
 public class SettingsRender extends AbstractScreen {
     public static boolean renderEffects = ModConfigMy.renderEffectsConfig.get();
 
@@ -41,15 +38,6 @@ public class SettingsRender extends AbstractScreen {
                     ModConfigMy.saveConfig();
                 }, ModConfigMy.renderEffectsConfig);
         this.addButton(toggleButton);
-
-
-        RenderSmallToggle r2 = new RenderSmallToggle(toggleButtonX + 10, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
-                new TranslationTextComponent("s.render.effect"),
-                onPress -> {
-                    mc.player.sendMessage(new StringTextComponent("test"), UUID.randomUUID());
-
-                }, ModConfigMy.renderArmorConfig);
-        this.addButton(r2);
 
     }
 }
