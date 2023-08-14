@@ -1,15 +1,12 @@
 package ru.madara.gui.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.util.text.*;
 import ru.madara.config.ModConfigMy;
 import ru.madara.common.AbstractScreen;
 
 import ru.madara.gui.button.RenderSmallToggle;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -36,22 +33,22 @@ public class SettingsRender extends AbstractScreen {
         int toggleButtonX = (this.width - toggleButtonSize) / 2;
         int toggleButtonY = this.height / 2;
 
-        RenderSmallToggle toggleButton, r2;
-        toggleButton = new RenderSmallToggle(toggleButtonX, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
+        RenderSmallToggle toggleButton = new RenderSmallToggle(toggleButtonX, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
                 new TranslationTextComponent("button.render.effect"),
                 onPress -> {
                     renderEffects = !renderEffects;
                     ModConfigMy.renderEffectsConfig.set(renderEffects);
                     ModConfigMy.saveConfig();
-
-                });
-        r2 = new RenderSmallToggle(toggleButtonX + 10, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
-                new TranslationTextComponent("button.render.effect"),
-                onPress -> {
-                    mc.player.sendMessage(new StringTextComponent("sss"), UUID.randomUUID());
-                });
-
+                }, ModConfigMy.toggleButton);
         this.addButton(toggleButton);
+
+
+        RenderSmallToggle r2 = new RenderSmallToggle(toggleButtonX + 10, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
+                new TranslationTextComponent("s.render.effect"),
+                onPress -> {
+                    mc.player.sendMessage(new StringTextComponent("test"), UUID.randomUUID());
+
+                }, ModConfigMy.fff);
         this.addButton(r2);
 
     }
