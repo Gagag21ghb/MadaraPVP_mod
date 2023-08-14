@@ -39,7 +39,7 @@ public class SettingsRender extends AbstractScreen {
                     renderEffects = !renderEffects;
                     ModConfigMy.renderEffectsConfig.set(renderEffects);
                     ModConfigMy.saveConfig();
-                }, ModConfigMy.toggleButton);
+                }, ModConfigMy.renderEffectsConfig);
         this.addButton(toggleButton);
 
 
@@ -48,7 +48,7 @@ public class SettingsRender extends AbstractScreen {
                 onPress -> {
                     mc.player.sendMessage(new StringTextComponent("test"), UUID.randomUUID());
 
-                }, ModConfigMy.fff);
+                }, ModConfigMy.renderArmorConfig);
         this.addButton(r2);
 
     }

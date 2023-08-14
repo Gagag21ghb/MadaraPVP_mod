@@ -6,7 +6,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class ModConfigMy {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CONFIG;
-    public static ForgeConfigSpec.BooleanValue renderEffectsConfig, renderArmorConfig, toggleButton, fff;
+    public static ForgeConfigSpec.BooleanValue renderEffectsConfig, renderArmorConfig;
 
 
     static {
@@ -18,12 +18,7 @@ public class ModConfigMy {
         renderArmorConfig = BUILDER
                 .comment("Enable or disable armors rendering")
                 .define("armors_render", true);
-        toggleButton = BUILDER
-                .comment("Don't touch")
-                .define("toggle_button", true);
-        fff = BUILDER
-                .comment("Don't touch")
-                .define("toggle_button", true);
+
 
 
         BUILDER.pop();
