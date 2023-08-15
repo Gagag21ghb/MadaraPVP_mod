@@ -5,7 +5,7 @@ import net.minecraft.util.text.*;
 import ru.madara.config.ModConfigMy;
 import ru.madara.common.AbstractScreen;
 
-import ru.madara.gui.button.RenderSmallToggle;
+import ru.madara.gui.button.SmallToggleRender;
 
 public class SettingsRender extends AbstractScreen {
     public static boolean renderEffects = ModConfigMy.renderEffectsConfig.get();
@@ -30,7 +30,7 @@ public class SettingsRender extends AbstractScreen {
         int toggleButtonX = (this.width - toggleButtonSize) / 2;
         int toggleButtonY = this.height / 2;
 
-        RenderSmallToggle toggleButton = new RenderSmallToggle(toggleButtonX, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
+        SmallToggleRender toggleButton = new SmallToggleRender(toggleButtonX, toggleButtonY, toggleButtonSize, toggleButtonSize, StringTextComponent.EMPTY,
                 new TranslationTextComponent("button.render.effect"),
                 onPress -> {
                     renderEffects = !renderEffects;
@@ -38,6 +38,7 @@ public class SettingsRender extends AbstractScreen {
                     ModConfigMy.saveConfig();
                 }, ModConfigMy.renderEffectsConfig);
         this.addButton(toggleButton);
+
 
     }
 }

@@ -13,7 +13,7 @@ import ru.madara.font.styled.StyledFontRenderer;
 import java.awt.*;
 import java.util.function.Consumer;
 
-public class RenderSmallToggle extends Widget implements Wrapper {
+public class SmallToggleRender extends Widget implements Wrapper {
 
     private final Consumer<Widget> onPress;
     private TranslationTextComponent TextInButton;
@@ -21,7 +21,7 @@ public class RenderSmallToggle extends Widget implements Wrapper {
     private ForgeConfigSpec.BooleanValue toggleButtonConfig;
 
 
-    public RenderSmallToggle(int x, int y, int width, int height,
+    public SmallToggleRender(int x, int y, int width, int height,
                              ITextComponent title, TranslationTextComponent text, Consumer<Widget> onPress, ForgeConfigSpec.BooleanValue toggleButtonConfig) {
         super(x, y, width, height, title);
 
@@ -34,13 +34,11 @@ public class RenderSmallToggle extends Widget implements Wrapper {
 
     @Override
     public void renderButton(MatrixStack matrixStack, int mouseX, int mouseY, float delta) {
-
-
         int buttonWidth = this.getWidth();
         int buttonHeight = this.getHeight();
         int buttonX = this.x;
         int buttonY = this.y;
-        int argbColor = loadedToggleButtonState ? Color.red.getRGB() : Color.green.getRGB();
+        int argbColor = loadedToggleButtonState ? Color.green.getRGB() :Color.red.getRGB();
 
         StyledFontRenderer.drawShadowedCenteredYString(matrixStack, font, TextInButton, 0, 0 - font.getFontHeight(), Color.WHITE);
         AbstractGui.fill(matrixStack, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight, argbColor);

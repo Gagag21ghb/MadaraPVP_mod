@@ -6,7 +6,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class ModConfigMy {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CONFIG;
-    public static ForgeConfigSpec.BooleanValue renderEffectsConfig, renderArmorConfig;
+    public static ForgeConfigSpec.BooleanValue renderEffectsConfig, renderArmorConfig, test;
 
 
     static {
@@ -18,8 +18,6 @@ public class ModConfigMy {
         renderArmorConfig = BUILDER
                 .comment("Enable or disable armors rendering")
                 .define("armors_render", true);
-
-
 
         BUILDER.pop();
 

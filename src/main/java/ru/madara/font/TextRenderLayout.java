@@ -1,4 +1,4 @@
-package ru.madara.gui.button;
+package ru.madara.font;
 
 
 public enum TextRenderLayout {
