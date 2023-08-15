@@ -32,7 +32,7 @@ public abstract class AbstractScreen extends Screen implements Wrapper {
 
     @Override
     public void render(MatrixStack matrixStack, int p_230430_2_, int p_230430_3_, float p_230430_4_) {
-        Minecraft.getInstance().textureManager.bind(BLACK);
+       mc.textureManager.bind(BLACK);
 
         int textureWidth = 135;
         int textureHeight = 170;

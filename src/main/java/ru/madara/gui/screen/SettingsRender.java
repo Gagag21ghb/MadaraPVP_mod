@@ -1,11 +1,13 @@
 package ru.madara.gui.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.*;
 import ru.madara.config.ModConfigMy;
 import ru.madara.common.AbstractScreen;
 
 import ru.madara.gui.button.SmallToggleRender;
+import ru.madara.render.RedactorMode;
 
 public class SettingsRender extends AbstractScreen {
     public static boolean renderEffects = ModConfigMy.renderEffectsConfig.get();
@@ -39,6 +41,9 @@ public class SettingsRender extends AbstractScreen {
                 }, ModConfigMy.renderEffectsConfig);
         this.addButton(toggleButton);
 
-
+        Button knopka = new Button(toggleButtonX+30, toggleButtonY, 70, 20, StringTextComponent.EMPTY, button ->{
+            mc.setScreen(new RedactorMode(new StringTextComponent("mode")));
+        });
+        this.addButton(knopka);
     }
 }
