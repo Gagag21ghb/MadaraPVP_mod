@@ -9,9 +9,7 @@ import ru.madara.font.styled.StyledFont;
 
 public interface Wrapper {
 
-    StyledFont font= new StyledFont("Greycliff.ttf", 20, 0.0f, 1.0f, 0.5f, Lang.ENG_RU);
-    String FONT_DIR = "/assets/" + Madara.MOD_ID + "/font/";
-
+    StyledFont font = new StyledFont("Greycliff.ttf", 20, 0.0f, 1.0f, 0.5f, Lang.ENG_RU);
     Minecraft mc = Minecraft.getInstance();
     ClientPlayerEntity player = mc.player;
     PlayerEntity playerEntity = mc.player;

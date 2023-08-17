@@ -41,9 +41,9 @@ public class SettingsRender extends AbstractScreen {
                 }, ModConfigMy.renderEffectsConfig);
         this.addButton(toggleButton);
 
-//        Button knopka = new Button(toggleButtonX+30, toggleButtonY, 70, 20, StringTextComponent.EMPTY, button ->{
-//            mc.setScreen(new RedactorMode(new StringTextComponent("mode")));
-//        });
-//        this.addButton(knopka);
+        Button knopka = new Button(toggleButtonX+30, toggleButtonY, 70, 20, StringTextComponent.EMPTY, button ->{
+            mc.setScreen(new RedactorMode(new StringTextComponent("mode")));
+        });
+        this.addButton(knopka);
     }
 }

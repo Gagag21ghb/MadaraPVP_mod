@@ -17,12 +17,16 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.vector.Matrix4f;
+import ru.madara.Madara;
 import ru.madara.Wrapper;
 import ru.madara.font.TextureHelper;
+import ru.madara.font.styled.StyledFont;
 
 public abstract class AbstractFont   {
     Tessellator TESSELLATOR = Tessellator.getInstance();
     BufferBuilder BUILDER = TESSELLATOR.getBuilder();
+
+
 
     protected final Map<Character, Glyph> glyphs = new HashMap<>();
     protected int texId, imgWidth, imgHeight;
@@ -54,8 +58,10 @@ public abstract class AbstractFont   {
         GlStateManager._bindTexture(0);
     }
 
+
     public static Font getFont(String fileName, int style, int size) {
-        String path = Wrapper.FONT_DIR.concat(fileName);
+        String FONT_DIR = "/assets/" + Madara.MOD_ID + "/font/";
+        String path = FONT_DIR.concat(fileName);
         Font font = null;
 
         try {
