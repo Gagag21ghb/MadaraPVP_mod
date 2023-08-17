@@ -1,5 +1,6 @@
 package ru.madara.render;
 
+import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ElytraItem;
@@ -14,6 +15,9 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber
 public class ArmorAndWeaponsRender implements Wrapper {
+    static int x;
+    static int y;
+
     @SubscribeEvent
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Post event) {
         if (event.getType() == RenderGameOverlayEvent.ElementType.ALL) {
@@ -24,24 +28,8 @@ public class ArmorAndWeaponsRender implements Wrapper {
             int textureHeight = 16;
             int barHeight = 3;
 
-            int x = (screenWidth - fontRenderer.width("100 (100%)") - textureWidth) + 15;
-            int y = (screenHeight - playerEntity.inventory.armor.size() * (textureHeight + barHeight)) - 3;
-
-
-            int mouseX = (int) mc.mouseHandler.xpos();
-            int mouseY = (int) mc.mouseHandler.ypos();
-
-            int xStart = x - textureWidth; // Левая граница рендера по оси X
-            int xEnd = x; // Правая граница рендера по оси X
-            int yStart = y; // Верхняя граница рендера по оси Y
-            int yEnd = y + playerEntity.inventory.armor.size() * (textureHeight + barHeight); // Нижняя граница рендера по оси Y
-
-            boolean isMouseOverRender = mouseX >= xStart && mouseX <= xEnd && mouseY >= yStart && mouseY <= yEnd;
-
-            if (isMouseOverRender) {
-                mc.player.sendMessage(new StringTextComponent("тесты тесты"), UUID.randomUUID());
-            }
-
+            x = (screenWidth - fontRenderer.width("100 (100%)") - textureWidth) + 15;
+            y = (screenHeight - playerEntity.inventory.armor.size() * (textureHeight + barHeight)) - 3;
 
             event.getMatrixStack().pushPose();
             for (int i = playerEntity.inventory.armor.size() - 1; i >= 0; i--) {
