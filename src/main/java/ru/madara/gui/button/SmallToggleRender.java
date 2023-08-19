@@ -40,7 +40,7 @@ public class SmallToggleRender extends Widget implements Wrapper {
         int buttonY = this.y;
         int argbColor = loadedToggleButtonState ? Color.green.getRGB() :Color.red.getRGB();
 
-        StyledFontRenderer.drawShadowedCenteredYString(matrixStack, font, new TranslationTextComponent("button.render.effect"), 60, 40 - font.getFontHeight(), Color.WHITE);
+        StyledFontRenderer.drawShadowedCenteredYString(matrixStack, font, TextInButton, 60, 40 - font.getFontHeight(), Color.WHITE);
         AbstractGui.fill(matrixStack, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight, argbColor);
     }
 

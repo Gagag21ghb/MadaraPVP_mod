@@ -1,7 +1,11 @@
 package ru.madara.render;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.gui.AbstractGui;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
@@ -14,12 +18,15 @@ import ru.madara.Wrapper;
 import java.util.UUID;
 
 @Mod.EventBusSubscriber
-public class ArmorAndWeaponsRender implements Wrapper {
+public class ArmorAndWeaponsRender implements Wrapper{
     static int x;
     static int y;
 
     @SubscribeEvent
     public static void onPostRenderGameOverlay(RenderGameOverlayEvent.Post event) {
+
+        PlayerEntity playerEntity = mc.player;
+
         if (event.getType() == RenderGameOverlayEvent.ElementType.ALL) {
 
             int screenWidth = event.getWindow().getGuiScaledWidth();
@@ -29,6 +36,7 @@ public class ArmorAndWeaponsRender implements Wrapper {
             int barHeight = 3;
 
             x = (screenWidth - fontRenderer.width("100 (100%)") - textureWidth) + 15;
+            assert playerEntity != null;
             y = (screenHeight - playerEntity.inventory.armor.size() * (textureHeight + barHeight)) - 3;
 
             event.getMatrixStack().pushPose();
