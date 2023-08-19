@@ -1,4 +1,5 @@
 package ru.madara.font.styled;
+
 import java.awt.Font;
 import java.util.Locale;
 
@@ -7,16 +8,16 @@ import ru.madara.common.AbstractFont;
 import ru.madara.common.Lang;
 
 public class StyledFont {
-
     private final GlyphPage regular, bold, italic, boldItalic;
 
     public StyledFont(String fileName, int size, float stretching, float spacing, float lifting, Lang lang) {
+
         int[] codes = lang.getCharCodes();
         char[] chars = new char[(codes[1] - codes[0] + codes[3] - codes[2])];
 
         int c = 0;
         for (int d = 0; d <= 2; d += 2) {
-            for(int i = codes[d]; i <= codes[d + 1] - 1; i++) {
+            for (int i = codes[d]; i <= codes[d + 1] - 1; i++) {
                 chars[c] = (char) i;
                 c++;
             }
@@ -37,26 +38,26 @@ public class StyledFont {
         boolean italic = false;
         float width = 0.0f;
 
-        for(int i = 0; i < text.length(); i++) {
+        for (int i = 0; i < text.length(); i++) {
             char c0 = text.charAt(i);
 
             if (c0 == 167 && i + 1 < text.length() &&
                     StyledFontRenderer.STYLE_CODES.indexOf(Character.toLowerCase(text.charAt(i + 1))) != -1) {
                 int i1 = StyledFontRenderer.STYLE_CODES.indexOf(Character.toLowerCase(text.charAt(i + 1)));
 
-                if(i1 < 16) {
+                if (i1 < 16) {
                     bold = false;
                     italic = false;
-                } else if(i1 == 17) {
+                } else if (i1 == 17) {
                     bold = true;
-                } else if(i1 == 20) {
+                } else if (i1 == 20) {
                     italic = true;
-                } else if(i1 == 21) {
+                } else if (i1 == 21) {
                     bold = false;
                     italic = false;
                 }
 
-                i ++;
+                i++;
             } else {
                 width += getGlyphPage(bold, italic).getWidth(c0) + regular.getSpacing();
             }
@@ -66,11 +67,11 @@ public class StyledFont {
     }
 
     private GlyphPage getGlyphPage(boolean boldStyle, boolean italicStyle) {
-        if(boldStyle && italicStyle)
+        if (boldStyle && italicStyle)
             return boldItalic;
-        else if(boldStyle)
+        else if (boldStyle)
             return bold;
-        else if(italicStyle)
+        else if (italicStyle)
             return italic;
         else
             return regular;

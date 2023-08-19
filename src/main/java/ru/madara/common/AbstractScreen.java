@@ -3,17 +3,12 @@ package ru.madara.common;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import ru.madara.Madara;
 import ru.madara.Wrapper;
-import ru.madara.gui.button.ButtonStringRender;
-import ru.madara.gui.screen.SettingsRender;
-
-import java.awt.*;
+import ru.madara.gui.button.LinesButtonRender;
 
 import static ru.madara.settings.AddSettings.MY_KEY_FIRST;
 
@@ -61,7 +56,7 @@ public abstract class AbstractScreen extends Screen implements Wrapper {
         int x = (this.width - buttonWidth) / 2;
         int y = this.height / 2 + 40;
 
-        ButtonStringRender onOfRender = new ButtonStringRender(x, y, buttonWidth, buttonHeight, new TranslationTextComponent("button.on.of.render"));
+        LinesButtonRender onOfRender = new LinesButtonRender(x, y, buttonWidth, buttonHeight, new TranslationTextComponent("button.on.of.render"));
         this.addButton(onOfRender);
 
     }

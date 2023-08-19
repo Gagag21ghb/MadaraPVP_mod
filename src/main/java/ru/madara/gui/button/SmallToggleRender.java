@@ -6,6 +6,7 @@ import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.ForgeConfigSpec;
+import ru.madara.Madara;
 import ru.madara.Wrapper;
 import ru.madara.config.ModConfigMy;
 import ru.madara.font.styled.StyledFontRenderer;
@@ -40,7 +41,7 @@ public class SmallToggleRender extends Widget implements Wrapper {
         int buttonY = this.y;
         int argbColor = loadedToggleButtonState ? Color.green.getRGB() :Color.red.getRGB();
 
-        StyledFontRenderer.drawShadowedCenteredYString(matrixStack, font, TextInButton, 60, 40 - font.getFontHeight(), Color.WHITE);
+        StyledFontRenderer.drawShadowedCenteredYString(matrixStack, Madara.font, TextInButton, 60, 40 - Madara.font.getFontHeight(), Color.WHITE);
         AbstractGui.fill(matrixStack, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight, argbColor);
     }
 
