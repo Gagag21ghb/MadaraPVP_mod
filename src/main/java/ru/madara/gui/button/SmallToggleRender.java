@@ -8,7 +8,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.ForgeConfigSpec;
 import ru.madara.Madara;
 import ru.madara.Wrapper;
-import ru.madara.config.ModConfigMy;
+import ru.madara.config.ModConfig;
 import ru.madara.font.styled.StyledFontRenderer;
 
 import java.awt.*;
@@ -53,7 +53,7 @@ public class SmallToggleRender extends Widget implements Wrapper {
             loadedToggleButtonState = !loadedToggleButtonState;
 
             toggleButtonConfig.set(loadedToggleButtonState);
-            ModConfigMy.saveConfig();
+            ModConfig.saveConfig();
 
         }
     }

@@ -3,7 +3,7 @@ package ru.madara.config;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 
-public class ModConfigMy {
+public class ModConfig {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec CONFIG;
     public static ForgeConfigSpec.BooleanValue renderEffectsConfig, renderArmorConfig, test;

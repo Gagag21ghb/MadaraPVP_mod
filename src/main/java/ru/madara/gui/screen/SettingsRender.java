@@ -3,14 +3,14 @@ package ru.madara.gui.screen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.*;
-import ru.madara.config.ModConfigMy;
+import ru.madara.config.ModConfig;
 import ru.madara.common.AbstractScreen;
 
 import ru.madara.gui.button.SmallToggleRender;
 import ru.madara.render.RedactorMode;
 
 public class SettingsRender extends AbstractScreen {
-    public static boolean renderEffects = ModConfigMy.renderEffectsConfig.get();
+    public static boolean renderEffects = ModConfig.renderEffectsConfig.get();
 
     public SettingsRender(ITextComponent p_i51108_1_) {
         super(p_i51108_1_);
@@ -36,9 +36,9 @@ public class SettingsRender extends AbstractScreen {
                 new TranslationTextComponent("button.render.effect"),
                 onPress -> {
                     renderEffects = !renderEffects;
-                    ModConfigMy.renderEffectsConfig.set(renderEffects);
-                    ModConfigMy.saveConfig();
-                }, ModConfigMy.renderEffectsConfig);
+                    ModConfig.renderEffectsConfig.set(renderEffects);
+                    ModConfig.saveConfig();
+                }, ModConfig.renderEffectsConfig);
         this.addButton(toggleButton);
 
         Button knopka = new Button(toggleButtonX+30, toggleButtonY, 70, 20, StringTextComponent.EMPTY, button ->{

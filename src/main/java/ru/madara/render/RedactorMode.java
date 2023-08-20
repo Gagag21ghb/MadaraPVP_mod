@@ -1,17 +1,24 @@
 package ru.madara.render;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 
 import net.minecraft.util.text.ITextComponent;
-
-import java.awt.*;
+import ru.madara.Wrapper;
 
 import static ru.madara.settings.AddSettings.MY_KEY_FIRST;
 
-public class RedactorMode extends Screen {
+public class RedactorMode extends Screen implements Wrapper {
+
+    private boolean isDragging = false;
+    private int dragOffsetX = 0;
+    private int dragOffsetY = 0;
+    private int draggedRectX = 6;
+    private int draggedRectY = 10;
+    private final int rectWidth = 92;
+    private final int rectHeight = 40;
+
     public RedactorMode(ITextComponent p_i51108_1_) {
         super(p_i51108_1_);
     }
@@ -36,21 +43,44 @@ public class RedactorMode extends Screen {
 
         int screenWidth = this.width;
         int screenHeight = this.height;
-
         int rectangleWidth = 72;
         int rectangleHeight = 73;
-
         int rectangleX = screenWidth - rectangleWidth;
         int rectangleY = screenHeight - rectangleHeight;
 
         fill(matrixStack, rectangleX, rectangleY, rectangleX + rectangleWidth, rectangleY + rectangleHeight, 0xFFFFFF00);
 
+        fill(matrixStack, draggedRectX, draggedRectY, draggedRectX + rectWidth, draggedRectY + rectHeight, 0xFFFFFF00);
 
-        int width = 92; // Ширина прямоугольника
-        int height = 40; // Высота прямоугольника
+    }
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (button == 0 && mouseX >= draggedRectX && mouseX <= draggedRectX + rectWidth &&
+                mouseY >= draggedRectY && mouseY <= draggedRectY + rectHeight) {
+            isDragging = true;
+            dragOffsetX = (int) mouseX - draggedRectX;
+            dragOffsetY = (int) mouseY - draggedRectY;
+            return true;
+        }
+        return super.mouseClicked(mouseX, mouseY, button);
+    }
+    @Override
+    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        if (button == 0) {
+            isDragging = false;
+            return true;
+        }
+        return super.mouseReleased(mouseX, mouseY, button);
+    }
 
-        fill(matrixStack, 6, 10, width, height, 0xFFFFFF00);
-
+    @Override
+    public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+        if (isDragging) {
+            draggedRectX = (int) mouseX - dragOffsetX;
+            draggedRectY = (int) mouseY - dragOffsetY;
+            return true;
+        }
+        return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
     }
 
 

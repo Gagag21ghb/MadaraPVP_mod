@@ -18,7 +18,7 @@ import ru.madara.Wrapper;
 import java.util.UUID;
 
 @Mod.EventBusSubscriber
-public class ArmorAndWeaponsRender implements Wrapper{
+public class ArmorAndWeaponsRender implements Wrapper {
     static int x;
     static int y;
 
