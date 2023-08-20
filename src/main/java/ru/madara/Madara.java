@@ -10,7 +10,7 @@ import ru.madara.font.styled.StyledFont;
 @Mod("madara")
 public class Madara {
     public static final String MOD_ID = "madara";
-    public static StyledFont font = new StyledFont("Greycliff.ttf", 20, 0.0f, 1.0f, 0.5f, Lang.ENG_RU);
+    public static StyledFont font = new StyledFont("Greycliff.ttf", 15, 0.0f, 1.0f, 0.5f, Lang.ENG_RU);
 
     public Madara() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModConfigMy.CONFIG);
