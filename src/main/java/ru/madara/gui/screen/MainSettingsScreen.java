@@ -8,8 +8,9 @@ import ru.madara.common.AbstractScreen;
 public class MainSettingsScreen extends AbstractScreen {
 
     public MainSettingsScreen(ITextComponent p_i51108_1_) {
-          super(p_i51108_1_);
+        super(p_i51108_1_);
     }
+
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         super.renderBackground(matrixStack);

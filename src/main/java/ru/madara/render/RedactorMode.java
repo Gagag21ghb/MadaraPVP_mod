@@ -33,6 +33,7 @@ public class RedactorMode extends BaseAbstractScreen implements Wrapper {
     public RedactorMode(ITextComponent p_i51108_1_) {
         super(p_i51108_1_);
     }
+
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         super.render(matrixStack, mouseX, mouseY, partialTicks);

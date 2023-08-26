@@ -22,12 +22,9 @@ import ru.madara.Wrapper;
 import ru.madara.font.TextureHelper;
 import ru.madara.font.styled.StyledFont;
 
-public abstract class AbstractFont   {
+public abstract class AbstractFont {
     Tessellator TESSELLATOR = Tessellator.getInstance();
     BufferBuilder BUILDER = TESSELLATOR.getBuilder();
-
-
-
     protected final Map<Character, Glyph> glyphs = new HashMap<>();
     protected int texId, imgWidth, imgHeight;
     protected float fontHeight;
@@ -46,6 +43,7 @@ public abstract class AbstractFont   {
     public final String getFontName() {
         return fontName;
     }
+
     protected final void setTexture(BufferedImage img) {
         texId = TextureHelper.loadTexture(img);
     }
@@ -67,7 +65,9 @@ public abstract class AbstractFont   {
         try {
             font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Wrapper.class.getResourceAsStream(path)))
                     .deriveFont(style, size);
-        } catch (FontFormatException | IOException e) {e.printStackTrace();}
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
 
         return font;
     }
@@ -81,7 +81,7 @@ public abstract class AbstractFont   {
         graphics.setColor(Color.WHITE);
         graphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,	RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         return graphics;
     }

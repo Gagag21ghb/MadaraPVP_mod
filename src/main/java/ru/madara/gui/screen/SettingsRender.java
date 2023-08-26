@@ -9,6 +9,8 @@ import ru.madara.common.AbstractScreen;
 import ru.madara.gui.button.SmallToggleRender;
 import ru.madara.render.RedactorMode;
 
+import java.util.UUID;
+
 public class SettingsRender extends AbstractScreen {
     public static boolean renderEffects = ModConfig.renderEffectsConfig.get();
 
@@ -42,7 +44,8 @@ public class SettingsRender extends AbstractScreen {
         this.addButton(toggleButton);
 
         Button knopka = new Button(toggleButtonX+30, toggleButtonY, 70, 20, StringTextComponent.EMPTY, button ->{
-            mc.setScreen(new RedactorMode(new StringTextComponent("mode")));
+          mc.setScreen(new RedactorMode(new StringTextComponent("mode")));
+
         });
         this.addButton(knopka);
     }
